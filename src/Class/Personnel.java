@@ -2,18 +2,43 @@ package Class;
 
 public class Personnel implements IPersonnel
 {
-    String    FirstName = "",
-              LastName  = "",
-              IDCode    = "";
+    public Personnel(ESector Sector_, EPosition Position_)
+    {
+        this.Sector   = Sector_;
+        this.Position = Position_;
+    }
 
-    ESector   Sector    = ESector.UNASSIGNED;
+    private String FirstName = "",
+                   LastName  = "",
+                   IDCode    = "";
+    ESector        Sector    = ESector.UNDEFINED;
+    EPosition      Position  = EPosition.UNDEFINED;
+
+    public boolean SetFirstName(String value)
+    {
+        if (this.GetPosition() != EPosition.ADMIN)
+            return false;
+
+        this.FirstName = value;
+        return true;
+    }
+
+    public boolean SetLastName(String value)
+    {
+        if (this.GetPosition() != EPosition.ADMIN)
+            return false;
+
+        this.LastName = value;
+        return true;
+    }
 
     public ESector GetSector()
     {
-        return ESector.UNDEFINED; // Force undefined since this class is made to be extended
+        return this.Sector;
     }
+
     public EPosition GetPosition()
     {
-        return EPosition.UNDEFINED; // Force undefined since this class is made to be extended
+        return this.Position;
     }
 }

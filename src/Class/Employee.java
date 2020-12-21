@@ -2,15 +2,8 @@ package Class;
 
 public class Employee extends Personnel
 {
-    @Override
-    public ESector GetSector()
+    public Employee()
     {
-        return this.Sector;
-    }
-
-    @Override
-    public EPosition GetPosition()
-    {
-        return EPosition.EMPLOYEE;
+        super(ESector.UNASSIGNED, EPosition.EMPLOYEE);
     }
 }

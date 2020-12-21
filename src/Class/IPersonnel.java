@@ -18,6 +18,6 @@ public interface IPersonnel
 
     ESector GetSector();
     EPosition GetPosition();
-    //string GetFirstName();
-    //string GetLastName();
+    boolean SetFirstName(String value);
+    boolean SetLastName(String value);
 }
