@@ -1,5 +1,16 @@
 package Class;
 
-public class Employee {
-    //  Child - Class.Employee Stuff Here
+public class Employee extends Personnel
+{
+    @Override
+    public ESector GetSector()
+    {
+        return this.Sector;
+    }
+
+    @Override
+    public EPosition GetPosition()
+    {
+        return EPosition.EMPLOYEE;
+    }
 }
