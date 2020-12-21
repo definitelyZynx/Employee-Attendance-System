@@ -7,7 +7,6 @@ public class Personnel implements IPersonnel
               IDCode    = "";
 
     ESector   Sector    = ESector.UNASSIGNED;
-    EPosition Position  = EPosition.UNASSIGNED;
 
     public ESector GetSector()
     {
