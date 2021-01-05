@@ -21,6 +21,11 @@ public class CPriviledge
         return new CPriviledge(this.Flag);
     }
     
+    public boolean HasPriviledge(CPriviledge PriviledgeFlag)
+    {
+        return (this.Flag & PriviledgeFlag.Flag) > 0;
+    }
+    
     public boolean HasPriviledge(int PriviledgeFlag)
     {
         return (this.Flag & PriviledgeFlag) > 0;
