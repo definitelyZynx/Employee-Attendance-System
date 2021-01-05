@@ -13,5 +13,5 @@ public class CEmployee
     public CInfoPersonal   Personal;
     public CInfoEmployment Employment;
     public CInfoAttendance Attendance;
-    public CPrivilege     Priviledge;
+    public CPrivilege      Priviledge;
 }

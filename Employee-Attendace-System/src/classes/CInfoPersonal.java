@@ -4,6 +4,7 @@ public class CInfoPersonal
 {
     public CInfoPersonal(CEmployee DataOwner_, String FirstName_, String LastName_, int Age_)
     {
+        this.DataOwner  = DataOwner_;
         this.FirstName  = FirstName_;
         this.LastName   = LastName_;
         this.Age        = Age_;
@@ -28,12 +29,22 @@ public class CInfoPersonal
         return true;
     }
     
+    public String[] GetNames()
+    {
+        return new String[] { this.FirstName, this.LastName };
+    }
+    
+    public int GetAge()
+    {
+        return this.Age;
+    }
+    
     private CEmployee DataOwner = null;
     
     private String FirstName = null;
     private String LastName  = null;
     private int    Age       = 0;
     
-    private final CPrivilege ReqPrivRead  = new CPrivilege(CPrivilege.NONE);
+    //private final CPrivilege ReqPrivRead  = new CPrivilege(CPrivilege.NONE);
     private final CPrivilege ReqPrivWrite = new CPrivilege(CPrivilege.CHANGE_BASIC_INFO);
 }
