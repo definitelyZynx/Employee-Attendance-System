@@ -20,13 +20,20 @@ public class FLogInMenu extends javax.swing.JFrame {
                     int second = cal.get(Calendar.SECOND);
                     int period = cal.get(Calendar.AM_PM);
                     String day_night = "";
-                    String secondTxt = "";
+                    String hourTxt = "";
                     String minuteTxt = "";
+                    String secondTxt = "";
                     
                     if(period == 1)
                         day_night = " PM";
                     else
                         day_night = " AM";
+                    
+                    // Add 0 if hour is < 10
+                    if(hour < 10)
+                        hourTxt = "0" + hour;
+                    else
+                        hourTxt = "" + hour;
                     
                     // Add 0 if minute is < 10
                     if(minute < 10)
@@ -40,7 +47,7 @@ public class FLogInMenu extends javax.swing.JFrame {
                     else
                         secondTxt = "" + second;
                         
-                    String time = hour + ":" + minuteTxt + ":" + secondTxt + day_night;
+                    String time = hourTxt + ":" + minuteTxt + ":" + secondTxt + day_night;
                     
                     Clock.setText(time);
                 }
@@ -69,7 +76,7 @@ public class FLogInMenu extends javax.swing.JFrame {
         Clock.setFont(new java.awt.Font("Gotham Black", 0, 36)); // NOI18N
         Clock.setForeground(new java.awt.Color(255, 255, 255));
         Clock.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Clock.setText("3:52:36 PM");
+        Clock.setText("03:52:36 PM");
 
         IDLabel.setForeground(new java.awt.Color(255, 255, 255));
         IDLabel.setText("ID Code:");
@@ -86,27 +93,27 @@ public class FLogInMenu extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(97, 97, 97)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Clock, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(Clock)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(KeyCodeLabel)
-                            .addComponent(IDLabel))
+                            .addComponent(IDLabel, javax.swing.GroupLayout.Alignment.LEADING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(KeyCodePassField, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(29, 29, 29)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(IDTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                            .addComponent(IDTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(KeyCodePassField))))
                 .addGap(103, 103, 103))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(151, 151, 151))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(83, 83, 83)
+                .addGap(79, 79, 79)
                 .addComponent(Clock, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
+                .addGap(33, 33, 33)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(IDLabel)
                     .addComponent(IDTxtField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
