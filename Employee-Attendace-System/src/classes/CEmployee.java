@@ -3,7 +3,7 @@ package classes;
 public class CEmployee
 {    
     
-    public CEmployee(CInfoPersonal Personal_, CInfoEmployment Employment_, CPriviledge Priviledge_)
+    public CEmployee(CInfoPersonal Personal_, CInfoEmployment Employment_, CPrivilege Priviledge_)
     {
         this.Personal   = Personal_;
         this.Employment = Employment_;
@@ -13,5 +13,5 @@ public class CEmployee
     public CInfoPersonal   Personal;
     public CInfoEmployment Employment;
     public CInfoAttendance Attendance;
-    public CPriviledge     Priviledge;
+    public CPrivilege     Priviledge;
 }

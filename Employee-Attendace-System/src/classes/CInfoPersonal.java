@@ -34,6 +34,6 @@ public class CInfoPersonal
     private String LastName  = null;
     private int    Age       = 0;
     
-    private final CPriviledge ReqPrivRead  = new CPriviledge(CPriviledge.NONE);
-    private final CPriviledge ReqPrivWrite = new CPriviledge(CPriviledge.CHANGE_BASIC_INFO);
+    private final CPrivilege ReqPrivRead  = new CPrivilege(CPrivilege.NONE);
+    private final CPrivilege ReqPrivWrite = new CPrivilege(CPrivilege.CHANGE_BASIC_INFO);
 }
