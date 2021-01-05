@@ -1,2 +1,1 @@
-# Class.Employee Attendance System
- OOP
+# Employee Attendance System
