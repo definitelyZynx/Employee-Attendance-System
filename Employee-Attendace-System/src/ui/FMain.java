@@ -1,7 +1,7 @@
 package ui;
 
-public class Main extends javax.swing.JFrame {
-    public Main() {
+public class FMain extends javax.swing.JFrame {
+    public FMain() {
         initComponents();
     }
     @SuppressWarnings("unchecked")
@@ -30,7 +30,7 @@ public class Main extends javax.swing.JFrame {
         {
             public void run()
             {
-                new Main().setVisible(true);
+                new FMain().setVisible(true);
             }
         });
     }
