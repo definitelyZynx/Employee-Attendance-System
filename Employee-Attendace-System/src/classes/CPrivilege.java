@@ -1,6 +1,6 @@
 package classes;
 
-public class CPriviledge
+public class CPrivilege
 {
     public static final int NONE                   = 0;
     public static final int TIME_IN                = 1;
@@ -11,14 +11,19 @@ public class CPriviledge
     public static final int CHANGE_BASIC_INFO      = 1 << 5;
     public static final int CHANGE_EMPLOYMENT_INFO = 1 << 6;
     
-    public CPriviledge(int Flags)
+    public CPrivilege(int Flags)
     {
         this.Flag = Flags;
     }
     
-    public CPriviledge GetAllPriviledge()
+    public CPrivilege GetAllPriviledge()
     {
-        return new CPriviledge(this.Flag);
+        return new CPrivilege(this.Flag);
+    }
+    
+    public boolean HasPriviledge(CPrivilege PriviledgeFlag)
+    {
+        return (this.Flag & PriviledgeFlag.Flag) > 0;
     }
     
     public boolean HasPriviledge(int PriviledgeFlag)
@@ -26,5 +31,5 @@ public class CPriviledge
         return (this.Flag & PriviledgeFlag) > 0;
     }
     
-    private int Flag = CPriviledge.NONE;
+    private int Flag = CPrivilege.NONE;
 }
