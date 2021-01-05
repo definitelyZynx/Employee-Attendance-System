@@ -21,19 +21,26 @@ public class FLogInMenu extends javax.swing.JFrame {
                     int period = cal.get(Calendar.AM_PM);
                     String day_night = "";
                     String secondTxt = "";
+                    String minuteTxt = "";
                     
                     if(period == 1)
                         day_night = " PM";
                     else
                         day_night = " AM";
                     
+                    // Add 0 if minute is < 10
+                    if(minute < 10)
+                        minuteTxt = "0" + minute;
+                    else
+                        minuteTxt = "" + minute;
                     
+                    // Add 0 if second is < 10
                     if(second < 10)
                         secondTxt = "0" + second;
                     else
                         secondTxt = "" + second;
                         
-                    String time = hour + ":" + minute + ":" + secondTxt + day_night;
+                    String time = hour + ":" + minuteTxt + ":" + secondTxt + day_night;
                     
                     Clock.setText(time);
                 }
@@ -64,8 +71,10 @@ public class FLogInMenu extends javax.swing.JFrame {
         Clock.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Clock.setText("3:52:36 PM");
 
+        IDLabel.setForeground(new java.awt.Color(255, 255, 255));
         IDLabel.setText("ID Code:");
 
+        KeyCodeLabel.setForeground(new java.awt.Color(255, 255, 255));
         KeyCodeLabel.setText("Key Code:");
 
         jButton1.setText("Log In");
@@ -81,7 +90,7 @@ public class FLogInMenu extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(KeyCodeLabel)
-                            .addComponent(IDLabel, javax.swing.GroupLayout.Alignment.LEADING))
+                            .addComponent(IDLabel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(KeyCodePassField, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)

@@ -53,7 +53,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Component id="KeyCodeLabel" min="-2" max="-2" attributes="0"/>
-                              <Component id="IDLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="IDLabel" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -111,11 +111,17 @@
         </Component>
         <Component class="javax.swing.JLabel" name="IDLabel">
           <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="ID Code:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="KeyCodeLabel">
           <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Key Code:"/>
           </Properties>
         </Component>
