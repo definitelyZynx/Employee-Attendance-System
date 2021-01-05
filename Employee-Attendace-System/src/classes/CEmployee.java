@@ -1,15 +1,20 @@
 package classes;
 
 public class CEmployee
-{
-    enum EPriviledge
+{    
+    enum ESector
     {
         NONE,
     }
     
-    enum ESector
+    public CEmployee(String FirstName_, String LastName_, int Age_, ESector Sector_, String IDCode_, CPriviledge Priviledge_)
     {
-        NONE,
+        this.FirstName  = FirstName_;
+        this.LastName   = LastName_;
+        this.Age        = Age_;
+        this.Sector     = Sector_;
+        this.IDCode     = IDCode_;
+        this.Priviledge = Priviledge_;
     }
     
     // Personal Information
@@ -21,6 +26,9 @@ public class CEmployee
     private ESector Sector = ESector.NONE; 
     private String  IDCode = null;
     
+    // Attendance Info
+    
+    
     // Access Info
-    private EPriviledge Priviledge = EPriviledge.NONE;
+    private CPriviledge Priviledge;
 }
