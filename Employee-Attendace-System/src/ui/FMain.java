@@ -18,6 +18,15 @@ public class FMain extends javax.swing.JFrame
                 new CPrivilege(CPrivilege.ALL_PRIVILEGE)));
     }
     
+    public boolean ChallengeAuth(String IDCode, String Password)
+    {
+        for (CEmployee Employee : EmployeeList)
+            if (Employee.Employment.CheckCredentials(IDCode, Password))
+                return true;
+        
+        return false;
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents()
@@ -66,7 +75,6 @@ public class FMain extends javax.swing.JFrame
             public void run()
             {
                 new FMain().setVisible(true);
-                
             }
         });
     }

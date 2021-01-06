@@ -58,6 +58,7 @@ public class FLogInMenu extends javax.swing.JFrame {
         Clock = new javax.swing.JLabel();
         Day = new javax.swing.JLabel();
         Date = new javax.swing.JLabel();
+        LblNotification = new javax.swing.JLabel();
         IDTxtField = new javax.swing.JTextField();
         KeyTxtField = new javax.swing.JTextField();
         BtnLogin = new javax.swing.JButton();
@@ -93,6 +94,12 @@ public class FLogInMenu extends javax.swing.JFrame {
         Date.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Date.setText("MM/DD/YYYY");
         getContentPane().add(Date, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 460, -1));
+
+        LblNotification.setFont(new java.awt.Font("Gotham Light", 0, 14)); // NOI18N
+        LblNotification.setForeground(new java.awt.Color(255, 51, 51));
+        LblNotification.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LblNotification.setToolTipText("");
+        getContentPane().add(LblNotification, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 520, 460, -1));
 
         IDTxtField.setBackground(new java.awt.Color(18, 18, 18));
         IDTxtField.setForeground(new java.awt.Color(255, 255, 255));
@@ -180,6 +187,13 @@ public class FLogInMenu extends javax.swing.JFrame {
 
     private void BtnLoginActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_BtnLoginActionPerformed
     {//GEN-HEADEREND:event_BtnLoginActionPerformed
+      
+        if (!MainInstance.ChallengeAuth(IDTxtField.getText(), KeyTxtField.getText()))
+        {
+            LblNotification.setText("Invalid Password!");
+            return;
+        }
+        
         MainInstance.setEnabled(true);
         this.dispose();
     }//GEN-LAST:event_BtnLoginActionPerformed
@@ -193,5 +207,6 @@ public class FLogInMenu extends javax.swing.JFrame {
     private javax.swing.JLabel Day;
     private javax.swing.JTextField IDTxtField;
     private javax.swing.JTextField KeyTxtField;
+    private javax.swing.JLabel LblNotification;
     // End of variables declaration//GEN-END:variables
 }
