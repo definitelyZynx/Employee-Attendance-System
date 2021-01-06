@@ -15,69 +15,29 @@ public class FLogInMenu extends javax.swing.JFrame {
         {
             public void run()
             {
+                final String[] _dayToText = new String[]
+                {
+                    "Sunday",
+                    "Monday",
+                    "Tuesday",
+                    "Wednesday",
+                    "Thursday",
+                    "Friday",
+                    "Saturday"
+                };
+                
                 while(true){
                     Calendar cal = new GregorianCalendar();
-                    Date d = new Date();
-                    SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy");
                     
-                    int hour = cal.get(Calendar.HOUR);
-                    int minute = cal.get(Calendar.MINUTE);
-                    int period = cal.get(Calendar.AM_PM);
-                    int day = cal.get(Calendar.DAY_OF_WEEK);
+                    Date.setText(new SimpleDateFormat("MM-dd-yyyy").format(new Date()));
+                    Clock.setText(String.format("%02d:%02d %s", cal.get(Calendar.HOUR), cal.get(Calendar.MINUTE), cal.get(Calendar.AM_PM) == 1 ? " PM" : " AM"));
+                    Day.setText(_dayToText[cal.get(Calendar.DAY_OF_WEEK)]);
                     
-                    String day_night = "";
-                    String hourTxt = "";
-                    String minuteTxt = "";
-                    String dayText = "";
-                    
-                    switch(day)
+                    try
                     {
-                        case 1:
-                            dayText = "Sunday";
-                            break;
-                        case 2:
-                            dayText = "Monday";
-                            break;
-                        case 3:
-                            dayText = "Tuesday";
-                            break;
-                        case 4:
-                            dayText = "Wednesday";
-                            break;
-                        case 5:
-                            dayText = "Thursday";
-                            break;
-                        case 6:
-                            dayText = "Friday";
-                            break;
-                        case 7:
-                            dayText = "Saturday";
-                            break;
+                        Thread.sleep(1000);
                     }
-                    
-                    //  1 = PM , 0 = AM
-                    if(period == 1)
-                        day_night = " PM";
-                    else
-                        day_night = " AM";
-                    
-                    // Add 0 if hour is < 10
-                    if(hour < 10)
-                        hourTxt = "0" + hour;
-                    else
-                        hourTxt = "" + hour;
-                    
-                    // Add 0 if minute is < 10
-                    if(minute < 10)
-                        minuteTxt = "0" + minute;
-                    else
-                        minuteTxt = "" + minute;
-                        
-                    String time = hourTxt + ":" + minuteTxt + day_night;
-                    
-                    Date.setText(dateFormat.format(d));
-                    Clock.setText(time);
-                    Day.setText(dayText);
+                    catch (Exception e) {}
                 }
             }
             
@@ -105,18 +65,21 @@ public class FLogInMenu extends javax.swing.JFrame {
 
         Clock.setFont(new java.awt.Font("Gotham Black", 0, 30)); // NOI18N
         Clock.setForeground(new java.awt.Color(255, 255, 255));
-        Clock.setText("06:22 PM");
-        getContentPane().add(Clock, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, -1, -1));
+        Clock.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Clock.setText("00:00 XX");
+        getContentPane().add(Clock, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 460, -1));
 
         Day.setFont(new java.awt.Font("Gotham Black", 0, 14)); // NOI18N
         Day.setForeground(new java.awt.Color(255, 255, 255));
-        Day.setText("Monday");
-        getContentPane().add(Day, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 200, -1, -1));
+        Day.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Day.setText("DAY");
+        getContentPane().add(Day, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 200, 460, -1));
 
         Date.setFont(new java.awt.Font("Gotham Light", 0, 14)); // NOI18N
         Date.setForeground(new java.awt.Color(255, 255, 255));
-        Date.setText("01/05/2021");
-        getContentPane().add(Date, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 220, -1, -1));
+        Date.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Date.setText("MM/DD/YYYY");
+        getContentPane().add(Date, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 460, -1));
 
         IDTxtField.setBackground(new java.awt.Color(18, 18, 18));
         IDTxtField.setForeground(new java.awt.Color(255, 255, 255));
