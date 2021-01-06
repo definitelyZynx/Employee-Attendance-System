@@ -54,9 +54,9 @@ public class CInfoEmployment
     // Since there's no reads or writes allowed outside the class unless a requester with sufficient priviledge is provided
     public boolean CheckCredentials(String IDCode_, String Password_)
     {
-        if (IDCode_  == null && Password_ == null // make sure that the function is provided with atleast one or two valid arguments to check
-        ||  IDCode_  != null && IDCode_.equals(this.IDCode) // allows the function to only check for idcode match
-        ||  Password != null && Password_.equals(this.Password) // allows the function to only check for password match
+        if (IDCode_  == null &&  Password_ == null // make sure that the function is provided with atleast one or two valid arguments to check
+        ||  IDCode_  != null && !IDCode_.equals(this.IDCode) // allows the function to only check for idcode match
+        ||  Password != null && !Password_.equals(this.Password) // allows the function to only check for password match
         ) {
             return false;
         }
