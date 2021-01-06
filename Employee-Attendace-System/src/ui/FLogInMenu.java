@@ -37,7 +37,7 @@ public class FLogInMenu extends javax.swing.JFrame {
                     
                     Date.setText(new SimpleDateFormat("MM-dd-yyyy").format(new Date()));
                     Clock.setText(String.format("%02d:%02d  %s", cal.get(Calendar.HOUR), cal.get(Calendar.MINUTE), cal.get(Calendar.AM_PM) == 1 ? "PM" : "AM"));
-                    Day.setText(_dayToText[cal.get(Calendar.DAY_OF_WEEK)]);
+                    Day.setText(_dayToText[cal.get(Calendar.DAY_OF_WEEK) - 1]);
                     
                     try
                     {
