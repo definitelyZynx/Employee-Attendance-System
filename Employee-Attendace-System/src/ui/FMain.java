@@ -18,13 +18,13 @@ public class FMain extends javax.swing.JFrame
                 new CPrivilege(CPrivilege.ALL_PRIVILEGE)));
     }
     
-    public boolean ChallengeAuth(String IDCode, String Password)
+    public CEmployee ChallengeAuth(String IDCode, String Password)
     {
         for (CEmployee Employee : EmployeeList)
             if (Employee.Employment.CheckCredentials(IDCode, Password))
-                return true;
+                return Employee;
         
-        return false;
+        return null;
     }
     
     @SuppressWarnings("unchecked")

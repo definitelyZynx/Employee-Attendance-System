@@ -1,9 +1,9 @@
 package ui;
 
+import classes.*;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.awt.Color;
-import java.awt.event.WindowEvent;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -188,7 +188,9 @@ public class FLogInMenu extends javax.swing.JFrame {
     private void BtnLoginActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_BtnLoginActionPerformed
     {//GEN-HEADEREND:event_BtnLoginActionPerformed
       
-        if (!MainInstance.ChallengeAuth(IDTxtField.getText(), KeyTxtField.getText()))
+        CEmployee Employee = MainInstance.ChallengeAuth(IDTxtField.getText(), KeyTxtField.getText());
+        
+        if (Employee == null)
         {
             LblNotification.setText("Invalid Password!");
             return;
