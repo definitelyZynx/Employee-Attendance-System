@@ -7,7 +7,6 @@ import java.util.GregorianCalendar;
 
 public class FTimeMenu extends javax.swing.JFrame {
     
-    
     public FTimeMenu() {
         initComponents();
         
