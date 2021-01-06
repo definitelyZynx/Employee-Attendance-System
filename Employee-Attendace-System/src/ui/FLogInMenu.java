@@ -2,6 +2,9 @@ package ui;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.awt.Color;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class FLogInMenu extends javax.swing.JFrame {
     
@@ -14,28 +17,67 @@ public class FLogInMenu extends javax.swing.JFrame {
             {
                 while(true){
                     Calendar cal = new GregorianCalendar();
+                    Date d = new Date();
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy");
                     
                     int hour = cal.get(Calendar.HOUR);
                     int minute = cal.get(Calendar.MINUTE);
-                    int second = cal.get(Calendar.SECOND);
                     int period = cal.get(Calendar.AM_PM);
-                    String day_night = "";
-                    String secondTxt = "";
+                    int day = cal.get(Calendar.DAY_OF_WEEK);
                     
+                    String day_night = "";
+                    String hourTxt = "";
+                    String minuteTxt = "";
+                    String dayText = "";
+                    
+                    switch(day)
+                    {
+                        case 1:
+                            dayText = "Sunday";
+                            break;
+                        case 2:
+                            dayText = "Monday";
+                            break;
+                        case 3:
+                            dayText = "Tuesday";
+                            break;
+                        case 4:
+                            dayText = "Wednesday";
+                            break;
+                        case 5:
+                            dayText = "Thursday";
+                            break;
+                        case 6:
+                            dayText = "Friday";
+                            break;
+                        case 7:
+                            dayText = "Saturday";
+                            break;
+                    }
+                    
+                    //  1 = PM , 0 = AM
                     if(period == 1)
                         day_night = " PM";
                     else
                         day_night = " AM";
                     
-                    
-                    if(second < 10)
-                        secondTxt = "0" + second;
+                    // Add 0 if hour is < 10
+                    if(hour < 10)
+                        hourTxt = "0" + hour;
                     else
-                        secondTxt = "" + second;
-                        
-                    String time = hour + ":" + minute + ":" + secondTxt + day_night;
+                        hourTxt = "" + hour;
                     
+                    // Add 0 if minute is < 10
+                    if(minute < 10)
+                        minuteTxt = "0" + minute;
+                    else
+                        minuteTxt = "" + minute;
+                        
+                    String time = hourTxt + ":" + minuteTxt + day_night;
+                    
+                    Date.setText(dateFormat.format(d));
                     Clock.setText(time);
+                    Day.setText(dayText);
                 }
             }
             
@@ -46,85 +88,96 @@ public class FLogInMenu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
         Clock = new javax.swing.JLabel();
-        IDLabel = new javax.swing.JLabel();
-        KeyCodeLabel = new javax.swing.JLabel();
+        Day = new javax.swing.JLabel();
+        Date = new javax.swing.JLabel();
         IDTxtField = new javax.swing.JTextField();
-        KeyCodePassField = new javax.swing.JPasswordField();
+        KeyTxtField = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        Background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(0, 0, 16));
-
-        Clock.setBackground(new java.awt.Color(255, 255, 255));
-        Clock.setFont(new java.awt.Font("Gotham Black", 0, 36)); // NOI18N
+        Clock.setFont(new java.awt.Font("Gotham Black", 0, 30)); // NOI18N
         Clock.setForeground(new java.awt.Color(255, 255, 255));
-        Clock.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Clock.setText("3:52:36 PM");
+        Clock.setText("06:22 PM");
+        getContentPane().add(Clock, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, -1, -1));
 
-        IDLabel.setText("ID Code:");
+        Day.setFont(new java.awt.Font("Gotham Black", 0, 14)); // NOI18N
+        Day.setForeground(new java.awt.Color(255, 255, 255));
+        Day.setText("Monday");
+        getContentPane().add(Day, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 200, -1, -1));
 
-        KeyCodeLabel.setText("Key Code:");
+        Date.setFont(new java.awt.Font("Gotham Light", 0, 14)); // NOI18N
+        Date.setForeground(new java.awt.Color(255, 255, 255));
+        Date.setText("01/05/2021");
+        getContentPane().add(Date, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 220, -1, -1));
 
-        jButton1.setText("Log In");
+        IDTxtField.setBackground(new java.awt.Color(18, 18, 18));
+        IDTxtField.setForeground(new java.awt.Color(255, 255, 255));
+        IDTxtField.setToolTipText("ID Code");
+        IDTxtField.setBorder(null);
+        IDTxtField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                IDTxtFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                IDTxtFieldFocusLost(evt);
+            }
+        });
+        getContentPane().add(IDTxtField, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 360, 200, 30));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(97, 97, 97)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Clock, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(KeyCodeLabel)
-                            .addComponent(IDLabel, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(KeyCodePassField, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(29, 29, 29)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(IDTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(103, 103, 103))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(83, 83, 83)
-                .addComponent(Clock, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(IDLabel)
-                    .addComponent(IDTxtField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(KeyCodeLabel)
-                    .addComponent(KeyCodePassField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addGap(86, 86, 86))
-        );
+        KeyTxtField.setBackground(new java.awt.Color(18, 18, 18));
+        KeyTxtField.setForeground(new java.awt.Color(255, 255, 255));
+        KeyTxtField.setBorder(null);
+        KeyTxtField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                KeyTxtFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                KeyTxtFieldFocusLost(evt);
+            }
+        });
+        getContentPane().add(KeyTxtField, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 414, 200, 30));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
+        jButton1.setBackground(null);
+        jButton1.setForeground(null);
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/LoginButton.png"))); // NOI18N
+        jButton1.setBorderPainted(false);
+        jButton1.setContentAreaFilled(false);
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 470, 280, 40));
+
+        Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/LogInMenuBG.png"))); // NOI18N
+        Background.setText("jLabel2");
+        getContentPane().add(Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 460, 630));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void IDTxtFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_IDTxtFieldFocusGained
+        IDTxtField.setText("");
+    }//GEN-LAST:event_IDTxtFieldFocusGained
+
+    private void IDTxtFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_IDTxtFieldFocusLost
+        if(IDTxtField.getText().isEmpty())
+        {
+            IDTxtField.setText("ID Code");
+            IDTxtField.setForeground(new Color(153, 153, 153));
+        }
+    }//GEN-LAST:event_IDTxtFieldFocusLost
+
+    private void KeyTxtFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_KeyTxtFieldFocusGained
+        KeyTxtField.setText("");
+    }//GEN-LAST:event_KeyTxtFieldFocusGained
+
+    private void KeyTxtFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_KeyTxtFieldFocusLost
+        if(KeyTxtField.getText().isEmpty())
+        {
+            KeyTxtField.setText("Key Code");
+            KeyTxtField.setForeground(new Color(153, 153, 153));
+        }
+    }//GEN-LAST:event_KeyTxtFieldFocusLost
 
     public static void main(String args[]) {
 
@@ -136,12 +189,12 @@ public class FLogInMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Background;
     private javax.swing.JLabel Clock;
-    private javax.swing.JLabel IDLabel;
+    private javax.swing.JLabel Date;
+    private javax.swing.JLabel Day;
     private javax.swing.JTextField IDTxtField;
-    private javax.swing.JLabel KeyCodeLabel;
-    private javax.swing.JPasswordField KeyCodePassField;
+    private javax.swing.JTextField KeyTxtField;
     private javax.swing.JButton jButton1;
-    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
