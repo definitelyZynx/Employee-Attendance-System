@@ -1,11 +1,6 @@
 package ui;
 
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 import java.awt.Color;
-import java.awt.event.WindowEvent;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class FLogInMenu extends javax.swing.JFrame {
     
@@ -17,47 +12,12 @@ public class FLogInMenu extends javax.swing.JFrame {
         
         initComponents();
         
-        new Thread()
-        {
-            public void run()
-            {
-                final String[] _dayToText = new String[]
-                {
-                    "Sunday",
-                    "Monday",
-                    "Tuesday",
-                    "Wednesday",
-                    "Thursday",
-                    "Friday",
-                    "Saturday"
-                };
-                
-                while(true){
-                    Calendar cal = new GregorianCalendar();
-                    
-                    Date.setText(new SimpleDateFormat("MM-dd-yyyy").format(new Date()));
-                    Clock.setText(String.format("%02d:%02d  %s", cal.get(Calendar.HOUR), cal.get(Calendar.MINUTE), cal.get(Calendar.AM_PM) == 1 ? "PM" : "AM"));
-                    Day.setText(_dayToText[cal.get(Calendar.DAY_OF_WEEK)]);
-                    
-                    try
-                    {
-                        Thread.sleep(1000);
-                    }
-                    catch (Exception e) {}
-                }
-            }
-            
-        }.start();
     }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
-        Clock = new javax.swing.JLabel();
-        Day = new javax.swing.JLabel();
-        Date = new javax.swing.JLabel();
         LblNotification = new javax.swing.JLabel();
         IDTxtField = new javax.swing.JTextField();
         KeyTxtField = new javax.swing.JTextField();
@@ -68,32 +28,12 @@ public class FLogInMenu extends javax.swing.JFrame {
         setAlwaysOnTop(true);
         setMaximumSize(new java.awt.Dimension(460, 630));
         setUndecorated(true);
-        addWindowListener(new java.awt.event.WindowAdapter()
-        {
-            public void windowClosing(java.awt.event.WindowEvent evt)
-            {
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
             }
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        Clock.setFont(new java.awt.Font("Gotham Black", 0, 30)); // NOI18N
-        Clock.setForeground(new java.awt.Color(255, 255, 255));
-        Clock.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Clock.setText("00:00 XX");
-        getContentPane().add(Clock, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 460, -1));
-
-        Day.setFont(new java.awt.Font("Gotham Black", 0, 14)); // NOI18N
-        Day.setForeground(new java.awt.Color(255, 255, 255));
-        Day.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Day.setText("DAY");
-        getContentPane().add(Day, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 200, 460, -1));
-
-        Date.setFont(new java.awt.Font("Gotham Light", 0, 14)); // NOI18N
-        Date.setForeground(new java.awt.Color(255, 255, 255));
-        Date.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Date.setText("MM/DD/YYYY");
-        getContentPane().add(Date, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 460, -1));
 
         LblNotification.setFont(new java.awt.Font("Gotham Light", 0, 14)); // NOI18N
         LblNotification.setForeground(new java.awt.Color(255, 51, 51));
@@ -105,14 +45,11 @@ public class FLogInMenu extends javax.swing.JFrame {
         IDTxtField.setForeground(new java.awt.Color(255, 255, 255));
         IDTxtField.setToolTipText("ID Code");
         IDTxtField.setBorder(null);
-        IDTxtField.addFocusListener(new java.awt.event.FocusAdapter()
-        {
-            public void focusGained(java.awt.event.FocusEvent evt)
-            {
+        IDTxtField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
                 IDTxtFieldFocusGained(evt);
             }
-            public void focusLost(java.awt.event.FocusEvent evt)
-            {
+            public void focusLost(java.awt.event.FocusEvent evt) {
                 IDTxtFieldFocusLost(evt);
             }
         });
@@ -121,14 +58,11 @@ public class FLogInMenu extends javax.swing.JFrame {
         KeyTxtField.setBackground(new java.awt.Color(18, 18, 18));
         KeyTxtField.setForeground(new java.awt.Color(255, 255, 255));
         KeyTxtField.setBorder(null);
-        KeyTxtField.addFocusListener(new java.awt.event.FocusAdapter()
-        {
-            public void focusGained(java.awt.event.FocusEvent evt)
-            {
+        KeyTxtField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
                 KeyTxtFieldFocusGained(evt);
             }
-            public void focusLost(java.awt.event.FocusEvent evt)
-            {
+            public void focusLost(java.awt.event.FocusEvent evt) {
                 KeyTxtFieldFocusLost(evt);
             }
         });
@@ -139,16 +73,14 @@ public class FLogInMenu extends javax.swing.JFrame {
         BtnLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/LoginButton.png"))); // NOI18N
         BtnLogin.setBorderPainted(false);
         BtnLogin.setContentAreaFilled(false);
-        BtnLogin.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        BtnLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnLoginActionPerformed(evt);
             }
         });
         getContentPane().add(BtnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 470, 280, 40));
 
-        Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/LogInMenuBG.png"))); // NOI18N
+        Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/LogInMenu.PNG"))); // NOI18N
         Background.setText("jLabel2");
         Background.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 2, true));
         getContentPane().add(Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 460, 630));
@@ -182,7 +114,7 @@ public class FLogInMenu extends javax.swing.JFrame {
 
     private void formWindowClosing(java.awt.event.WindowEvent evt)//GEN-FIRST:event_formWindowClosing
     {//GEN-HEADEREND:event_formWindowClosing
-        MainInstance.setEnabled(true);
+        MainInstance.setEnabled(false);
     }//GEN-LAST:event_formWindowClosing
 
     private void BtnLoginActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_BtnLoginActionPerformed
@@ -196,15 +128,17 @@ public class FLogInMenu extends javax.swing.JFrame {
         
         MainInstance.setEnabled(true);
         this.dispose();
+        
+        FTimeMenu TimeSessionWindow = new FTimeMenu();
+        TimeSessionWindow.setLocationRelativeTo(this);
+        TimeSessionWindow.setVisible(true);
+        
     }//GEN-LAST:event_BtnLoginActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Background;
     private javax.swing.JButton BtnLogin;
-    private javax.swing.JLabel Clock;
-    private javax.swing.JLabel Date;
-    private javax.swing.JLabel Day;
     private javax.swing.JTextField IDTxtField;
     private javax.swing.JTextField KeyTxtField;
     private javax.swing.JLabel LblNotification;
