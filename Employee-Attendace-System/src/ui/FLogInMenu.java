@@ -86,7 +86,8 @@ public class FLogInMenu extends javax.swing.JFrame {
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         Clock = new javax.swing.JLabel();
         Day = new javax.swing.JLabel();
@@ -96,7 +97,10 @@ public class FLogInMenu extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         Background = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setAlwaysOnTop(true);
+        setMaximumSize(new java.awt.Dimension(460, 630));
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Clock.setFont(new java.awt.Font("Gotham Black", 0, 30)); // NOI18N
@@ -118,11 +122,14 @@ public class FLogInMenu extends javax.swing.JFrame {
         IDTxtField.setForeground(new java.awt.Color(255, 255, 255));
         IDTxtField.setToolTipText("ID Code");
         IDTxtField.setBorder(null);
-        IDTxtField.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
+        IDTxtField.addFocusListener(new java.awt.event.FocusAdapter()
+        {
+            public void focusGained(java.awt.event.FocusEvent evt)
+            {
                 IDTxtFieldFocusGained(evt);
             }
-            public void focusLost(java.awt.event.FocusEvent evt) {
+            public void focusLost(java.awt.event.FocusEvent evt)
+            {
                 IDTxtFieldFocusLost(evt);
             }
         });
@@ -131,11 +138,14 @@ public class FLogInMenu extends javax.swing.JFrame {
         KeyTxtField.setBackground(new java.awt.Color(18, 18, 18));
         KeyTxtField.setForeground(new java.awt.Color(255, 255, 255));
         KeyTxtField.setBorder(null);
-        KeyTxtField.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
+        KeyTxtField.addFocusListener(new java.awt.event.FocusAdapter()
+        {
+            public void focusGained(java.awt.event.FocusEvent evt)
+            {
                 KeyTxtFieldFocusGained(evt);
             }
-            public void focusLost(java.awt.event.FocusEvent evt) {
+            public void focusLost(java.awt.event.FocusEvent evt)
+            {
                 KeyTxtFieldFocusLost(evt);
             }
         });
@@ -150,6 +160,7 @@ public class FLogInMenu extends javax.swing.JFrame {
 
         Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/LogInMenuBG.png"))); // NOI18N
         Background.setText("jLabel2");
+        Background.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 2, true));
         getContentPane().add(Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 460, 630));
 
         pack();
