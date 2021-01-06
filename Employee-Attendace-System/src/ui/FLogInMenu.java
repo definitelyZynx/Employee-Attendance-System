@@ -1,6 +1,15 @@
 package ui;
 
+<<<<<<< HEAD
 import java.awt.Color;
+=======
+import classes.*;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.awt.Color;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+>>>>>>> dec6b15dc1bd43b8a0678fcf4cf517cf3b634944
 
 public class FLogInMenu extends javax.swing.JFrame {
     
@@ -12,6 +21,40 @@ public class FLogInMenu extends javax.swing.JFrame {
         
         initComponents();
         
+<<<<<<< HEAD
+=======
+        new Thread()
+        {
+            public void run()
+            {
+                final String[] _dayToText = new String[]
+                {
+                    "Sunday",
+                    "Monday",
+                    "Tuesday",
+                    "Wednesday",
+                    "Thursday",
+                    "Friday",
+                    "Saturday"
+                };
+                
+                while(true){
+                    Calendar cal = new GregorianCalendar();
+                    
+                    Date.setText(new SimpleDateFormat("MM-dd-yyyy").format(new Date()));
+                    Clock.setText(String.format("%02d:%02d  %s", cal.get(Calendar.HOUR), cal.get(Calendar.MINUTE), cal.get(Calendar.AM_PM) == 1 ? "PM" : "AM"));
+                    Day.setText(_dayToText[cal.get(Calendar.DAY_OF_WEEK) - 1]);
+                    
+                    try
+                    {
+                        Thread.sleep(1000);
+                    }
+                    catch (Exception e) {}
+                }
+            }
+            
+        }.start();
+>>>>>>> dec6b15dc1bd43b8a0678fcf4cf517cf3b634944
     }
 
     @SuppressWarnings("unchecked")
@@ -120,7 +163,9 @@ public class FLogInMenu extends javax.swing.JFrame {
     private void BtnLoginActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_BtnLoginActionPerformed
     {//GEN-HEADEREND:event_BtnLoginActionPerformed
       
-        if (!MainInstance.ChallengeAuth(IDTxtField.getText(), KeyTxtField.getText()))
+        CEmployee Employee = MainInstance.ChallengeAuth(IDTxtField.getText(), KeyTxtField.getText());
+        
+        if (Employee == null)
         {
             LblNotification.setText("Invalid Password!");
             return;
