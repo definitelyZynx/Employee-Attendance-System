@@ -16,6 +16,8 @@ public class CPrivilege
     public static final int ACCESS_ATTENDANCE_DATA = 1 << 6;
     public static final int CHANGE_ATTENDANCE_DATA = 1 << 7;
     
+    public static final int ALL_PRIVILEGE          = 0xFFFFFFFF;
+    
     public CPrivilege(int Flags)
     {
         this.Flag = Flags;

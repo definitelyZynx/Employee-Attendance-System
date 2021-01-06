@@ -1,11 +1,21 @@
 package ui;
 
+import classes.*;
+import java.util.*;
+
 public class FMain extends javax.swing.JFrame
 {
+    private ArrayList<CEmployee> EmployeeList = new ArrayList<CEmployee>();
+    
+    private CEmployee CurrentlyAuthenticatedAccount = null;
     
     public FMain()
     {
-        initComponents();    
+        initComponents();
+        EmployeeList.add(new CEmployee(
+                new CInfoPersonal(null, "Admin", "Debug", 20),
+                new CInfoEmployment("0000", "1234", new CSector()),
+                new CPrivilege(CPrivilege.ALL_PRIVILEGE)));
     }
     
     @SuppressWarnings("unchecked")
@@ -15,6 +25,7 @@ public class FMain extends javax.swing.JFrame
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Employee Attendance System");
+        setAlwaysOnTop(true);
         setBackground(new java.awt.Color(18, 18, 18));
         addWindowListener(new java.awt.event.WindowAdapter()
         {
@@ -43,9 +54,10 @@ public class FMain extends javax.swing.JFrame
         setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
         getContentPane().setBackground(new java.awt.Color(18, 18, 18));
         
-        FLogInMenu LoginSessionWindow = new FLogInMenu();
+        FLogInMenu LoginSessionWindow = new FLogInMenu(this);
         LoginSessionWindow.setLocationRelativeTo(this);
         LoginSessionWindow.setVisible(true);
+        this.setEnabled(false);
     }//GEN-LAST:event_formWindowOpened
 
     public static void main(String args[]) {
@@ -54,6 +66,7 @@ public class FMain extends javax.swing.JFrame
             public void run()
             {
                 new FMain().setVisible(true);
+                
             }
         });
     }

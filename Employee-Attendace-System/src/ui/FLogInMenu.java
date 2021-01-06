@@ -3,12 +3,18 @@ package ui;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.awt.Color;
+import java.awt.event.WindowEvent;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class FLogInMenu extends javax.swing.JFrame {
     
-    public FLogInMenu() {
+    private FMain MainInstance = null;
+    
+    public FLogInMenu(FMain MainInstance_) {
+        
+        this.MainInstance = MainInstance_;
+        
         initComponents();
         
         new Thread()
@@ -30,7 +36,7 @@ public class FLogInMenu extends javax.swing.JFrame {
                     Calendar cal = new GregorianCalendar();
                     
                     Date.setText(new SimpleDateFormat("MM-dd-yyyy").format(new Date()));
-                    Clock.setText(String.format("%02d:%02d %s", cal.get(Calendar.HOUR), cal.get(Calendar.MINUTE), cal.get(Calendar.AM_PM) == 1 ? " PM" : " AM"));
+                    Clock.setText(String.format("%02d:%02d  %s", cal.get(Calendar.HOUR), cal.get(Calendar.MINUTE), cal.get(Calendar.AM_PM) == 1 ? "PM" : "AM"));
                     Day.setText(_dayToText[cal.get(Calendar.DAY_OF_WEEK)]);
                     
                     try
@@ -54,13 +60,20 @@ public class FLogInMenu extends javax.swing.JFrame {
         Date = new javax.swing.JLabel();
         IDTxtField = new javax.swing.JTextField();
         KeyTxtField = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        BtnLogin = new javax.swing.JButton();
         Background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setAlwaysOnTop(true);
         setMaximumSize(new java.awt.Dimension(460, 630));
         setUndecorated(true);
+        addWindowListener(new java.awt.event.WindowAdapter()
+        {
+            public void windowClosing(java.awt.event.WindowEvent evt)
+            {
+                formWindowClosing(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Clock.setFont(new java.awt.Font("Gotham Black", 0, 30)); // NOI18N
@@ -114,12 +127,19 @@ public class FLogInMenu extends javax.swing.JFrame {
         });
         getContentPane().add(KeyTxtField, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 414, 200, 30));
 
-        jButton1.setBackground(null);
-        jButton1.setForeground(null);
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/LoginButton.png"))); // NOI18N
-        jButton1.setBorderPainted(false);
-        jButton1.setContentAreaFilled(false);
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 470, 280, 40));
+        BtnLogin.setBackground(null);
+        BtnLogin.setForeground(null);
+        BtnLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/LoginButton.png"))); // NOI18N
+        BtnLogin.setBorderPainted(false);
+        BtnLogin.setContentAreaFilled(false);
+        BtnLogin.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                BtnLoginActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BtnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 470, 280, 40));
 
         Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/LogInMenuBG.png"))); // NOI18N
         Background.setText("jLabel2");
@@ -153,22 +173,25 @@ public class FLogInMenu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_KeyTxtFieldFocusLost
 
-    public static void main(String args[]) {
+    private void formWindowClosing(java.awt.event.WindowEvent evt)//GEN-FIRST:event_formWindowClosing
+    {//GEN-HEADEREND:event_formWindowClosing
+        MainInstance.setEnabled(true);
+    }//GEN-LAST:event_formWindowClosing
 
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new FLogInMenu().setVisible(true);
-            }
-        });
-    }
+    private void BtnLoginActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_BtnLoginActionPerformed
+    {//GEN-HEADEREND:event_BtnLoginActionPerformed
+        MainInstance.setEnabled(true);
+        this.dispose();
+    }//GEN-LAST:event_BtnLoginActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Background;
+    private javax.swing.JButton BtnLogin;
     private javax.swing.JLabel Clock;
     private javax.swing.JLabel Date;
     private javax.swing.JLabel Day;
     private javax.swing.JTextField IDTxtField;
     private javax.swing.JTextField KeyTxtField;
-    private javax.swing.JButton jButton1;
     // End of variables declaration//GEN-END:variables
 }
