@@ -45,7 +45,8 @@ public class FTimeMenu extends javax.swing.JFrame {
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         Clock = new javax.swing.JLabel();
         Day = new javax.swing.JLabel();
@@ -92,22 +93,22 @@ public class FTimeMenu extends javax.swing.JFrame {
         TimeInOutLabel.setText("TIME IN");
         getContentPane().add(TimeInOutLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 382, 60, 20));
 
-        TimeInOutBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/TimeInOutButton.png"))); // NOI18N
+        TimeInOutBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/TimeInOutButton.png"))); // NOI18N
         TimeInOutBtn.setBorderPainted(false);
         TimeInOutBtn.setContentAreaFilled(false);
         getContentPane().add(TimeInOutBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 370, 270, -1));
 
-        AdminBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/AdminButton.png"))); // NOI18N
+        AdminBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/AdminButton.png"))); // NOI18N
         AdminBtn.setBorderPainted(false);
         AdminBtn.setContentAreaFilled(false);
         getContentPane().add(AdminBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 420, 270, -1));
 
-        CancelBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/CancelButton.png"))); // NOI18N
+        CancelBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/CancelButton.png"))); // NOI18N
         CancelBtn.setBorderPainted(false);
         CancelBtn.setContentAreaFilled(false);
         getContentPane().add(CancelBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 530, 460, -1));
 
-        Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/TimeMenu.png"))); // NOI18N
+        Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/TimeMenu.png"))); // NOI18N
         Background.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2));
         getContentPane().add(Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 

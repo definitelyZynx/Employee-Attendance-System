@@ -104,7 +104,7 @@
           <Connection code="null" type="code"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/images/LoginButton.png"/>
+          <Image iconType="3" name="/resources/LoginButton.png"/>
         </Property>
         <Property name="borderPainted" type="boolean" value="false"/>
         <Property name="contentAreaFilled" type="boolean" value="false"/>
@@ -121,7 +121,7 @@
     <Component class="javax.swing.JLabel" name="Background">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/images/LogInMenu.PNG"/>
+          <Image iconType="3" name="/resources/LogInMenu.PNG"/>
         </Property>
         <Property name="text" type="java.lang.String" value="jLabel2"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">

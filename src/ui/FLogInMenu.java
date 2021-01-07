@@ -1,7 +1,5 @@
 package ui;
 
-import java.awt.Color;
-
 import classes.*;
 import java.awt.Color;
 
@@ -82,7 +80,7 @@ public class FLogInMenu extends javax.swing.JFrame {
 
         BtnLogin.setBackground(null);
         BtnLogin.setForeground(null);
-        BtnLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/LoginButton.png"))); // NOI18N
+        BtnLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/LoginButton.png"))); // NOI18N
         BtnLogin.setBorderPainted(false);
         BtnLogin.setContentAreaFilled(false);
         BtnLogin.addActionListener(new java.awt.event.ActionListener()
@@ -94,7 +92,7 @@ public class FLogInMenu extends javax.swing.JFrame {
         });
         getContentPane().add(BtnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 470, 280, 40));
 
-        Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/LogInMenu.PNG"))); // NOI18N
+        Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/LogInMenu.PNG"))); // NOI18N
         Background.setText("jLabel2");
         Background.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 2, true));
         getContentPane().add(Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 460, 630));
@@ -134,7 +132,7 @@ public class FLogInMenu extends javax.swing.JFrame {
     private void BtnLoginActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_BtnLoginActionPerformed
     {//GEN-HEADEREND:event_BtnLoginActionPerformed
       
-        CEmployee Employee = MainInstance.ChallengeAuth(IDTxtField.getText(), KeyTxtField.getText());
+        CEmployee Employee = null; //MainInstance.ChallengeAuth(IDTxtField.getText(), KeyTxtField.getText());
         
         if (Employee == null)
         {
@@ -146,7 +144,6 @@ public class FLogInMenu extends javax.swing.JFrame {
         TimeSessionWindow.setLocationRelativeTo(this);
         TimeSessionWindow.setVisible(true);
         
-        this.dispose();
     }//GEN-LAST:event_BtnLoginActionPerformed
 
 

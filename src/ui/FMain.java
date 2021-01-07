@@ -6,26 +6,13 @@ import com.google.gson.*;
 
 public class FMain extends javax.swing.JFrame
 {
-    private ArrayList<CEmployee> EmployeeList = new ArrayList<CEmployee>();
-    private Gson gson = new Gson();
+    
+    private CDataBase EmployeeDatabase = new CDataBase();
     private CEmployee CurrentlyAuthenticatedAccount = null;
     
     public FMain()
     {
         initComponents();
-        EmployeeList.add(new CEmployee(
-                new CInfoPersonal(null, "Admin", "Debug", 20),
-                new CInfoEmployment("0000", "1234", new CSector()),
-                new CPrivilege(CPrivilege.ALL_PRIVILEGE)));
-    }
-    
-    public CEmployee ChallengeAuth(String IDCode, String Password)
-    {
-        for (CEmployee Employee : EmployeeList)
-            if (Employee.Employment.CheckCredentials(IDCode, Password))
-                return Employee;
-        
-        return null;
     }
     
     @SuppressWarnings("unchecked")
