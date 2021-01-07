@@ -1,6 +1,7 @@
 package ui;
 
 import classes.*;
+import instances.Forms;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -8,13 +9,11 @@ import java.util.GregorianCalendar;
 
 public class FTimeMenu extends javax.swing.JFrame
 {
-    private FMain MainInstance = null;
     private FLogInMenu LogInInstance = null;
     private CEmployee Employee = null;
     
-    public FTimeMenu(FMain MainInstance_, FLogInMenu LogInInstance_, CEmployee Employee_)
+    public FTimeMenu(FLogInMenu LogInInstance_, CEmployee Employee_)
     {
-        this.MainInstance  = MainInstance_;
         this.LogInInstance = LogInInstance_;
         this.Employee      = Employee_;
         initComponents();
@@ -46,7 +45,8 @@ public class FTimeMenu extends javax.swing.JFrame
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         Clock = new javax.swing.JLabel();
         Day = new javax.swing.JLabel();
@@ -62,8 +62,10 @@ public class FTimeMenu extends javax.swing.JFrame
         setAlwaysOnTop(true);
         setMaximumSize(new java.awt.Dimension(460, 629));
         setUndecorated(true);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowOpened(java.awt.event.WindowEvent evt) {
+        addWindowListener(new java.awt.event.WindowAdapter()
+        {
+            public void windowOpened(java.awt.event.WindowEvent evt)
+            {
                 formWindowOpened(evt);
             }
         });
@@ -106,8 +108,10 @@ public class FTimeMenu extends javax.swing.JFrame
         AdminBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/AdminButton.png"))); // NOI18N
         AdminBtn.setBorderPainted(false);
         AdminBtn.setContentAreaFilled(false);
-        AdminBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        AdminBtn.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 AdminBtnActionPerformed(evt);
             }
         });
@@ -116,8 +120,10 @@ public class FTimeMenu extends javax.swing.JFrame
         CancelBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/CancelButton.png"))); // NOI18N
         CancelBtn.setBorderPainted(false);
         CancelBtn.setContentAreaFilled(false);
-        CancelBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        CancelBtn.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 CancelBtnActionPerformed(evt);
             }
         });
@@ -145,7 +151,8 @@ public class FTimeMenu extends javax.swing.JFrame
 
     private void AdminBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_AdminBtnActionPerformed
     {//GEN-HEADEREND:event_AdminBtnActionPerformed
-        MainInstance.setEnabled(true);
+        Forms.Main.SetSession(Employee); // TODO: handle return
+        Forms.Main.setEnabled(true);
         LogInInstance.dispose();
         this.dispose();
     }//GEN-LAST:event_AdminBtnActionPerformed

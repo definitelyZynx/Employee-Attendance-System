@@ -2,18 +2,17 @@ package ui;
 
 import classes.*;
 import instances.Database;
+import instances.Forms;
 import java.awt.Color;
 import java.awt.event.FocusEvent;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-public class FLogInMenu extends javax.swing.JFrame {
-    
-    private FMain MainInstance = null;
-    
-    public FLogInMenu(FMain MainInstance_)
+public class FLogInMenu extends javax.swing.JFrame
+{
+
+    public FLogInMenu()
     {
-        this.MainInstance = MainInstance_;    
         initComponents();
     }
 
@@ -153,7 +152,7 @@ public class FLogInMenu extends javax.swing.JFrame {
 
     private void formWindowClosing(java.awt.event.WindowEvent evt)//GEN-FIRST:event_formWindowClosing
     {//GEN-HEADEREND:event_formWindowClosing
-        MainInstance.setEnabled(false);
+        Forms.Main.setEnabled(false);
     }//GEN-LAST:event_formWindowClosing
 
     private void BtnLoginActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_BtnLoginActionPerformed
@@ -171,7 +170,6 @@ public class FLogInMenu extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "This account is now registered as an admin!\n\nPlease setup your profile in the admin panel.", "First time setup", JOptionPane.INFORMATION_MESSAGE);
             Database.Instance.SaveToFile();
         }
-            
         
         CEmployee Employee = Database.Instance.ChallengeAuthentication(IDTxtField.getText(), KeyTxtField.getText());
         
@@ -181,7 +179,7 @@ public class FLogInMenu extends javax.swing.JFrame {
             return;
         }
         
-        FTimeMenu TimeSessionWindow = new FTimeMenu(MainInstance, this, Employee);
+        FTimeMenu TimeSessionWindow = new FTimeMenu(this, Employee);
         TimeSessionWindow.setLocationRelativeTo(this);
         TimeSessionWindow.setVisible(true);
         
