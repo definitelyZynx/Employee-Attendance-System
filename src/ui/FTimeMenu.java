@@ -1,5 +1,6 @@
 package ui;
 
+import classes.*;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -8,9 +9,12 @@ import java.util.GregorianCalendar;
 public class FTimeMenu extends javax.swing.JFrame
 {
     private FLogInMenu LogInInstance = null;
-    public FTimeMenu(FLogInMenu LogInInstance_)
+    private CEmployee Employee = null;
+    
+    public FTimeMenu(FLogInMenu LogInInstance_, CEmployee Employee_)
     {
         this.LogInInstance = LogInInstance_;
+        this.Employee = Employee_;
         initComponents();
         
         new Thread()
@@ -65,6 +69,13 @@ public class FTimeMenu extends javax.swing.JFrame
         setAlwaysOnTop(true);
         setMaximumSize(new java.awt.Dimension(460, 629));
         setUndecorated(true);
+        addWindowListener(new java.awt.event.WindowAdapter()
+        {
+            public void windowOpened(java.awt.event.WindowEvent evt)
+            {
+                formWindowOpened(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Clock.setFont(new java.awt.Font("Gotham Black", 0, 30)); // NOI18N
@@ -130,6 +141,11 @@ public class FTimeMenu extends javax.swing.JFrame
         LogInInstance.setEnabled(true);
         this.dispose();
     }//GEN-LAST:event_CancelBtnActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt)//GEN-FIRST:event_formWindowOpened
+    {//GEN-HEADEREND:event_formWindowOpened
+        EmployeeName.setText(String.join(" ", Employee.Personal.GetNames()));
+    }//GEN-LAST:event_formWindowOpened
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

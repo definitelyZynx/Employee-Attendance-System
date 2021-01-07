@@ -140,7 +140,7 @@ public class FLogInMenu extends javax.swing.JFrame {
             return;
         }
         
-        FTimeMenu TimeSessionWindow = new FTimeMenu(this);
+        FTimeMenu TimeSessionWindow = new FTimeMenu(this, Employee);
         TimeSessionWindow.setLocationRelativeTo(this);
         TimeSessionWindow.setVisible(true);
         

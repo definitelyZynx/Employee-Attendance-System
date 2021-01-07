@@ -9,7 +9,7 @@ public class CDataBase
 {
     public CDataBase()
     {
-        this.RegisterEmployee("John", "Doe", 20, "0000", "1234", 0, CPrivilege.ALL_PRIVILEGE);
+        this.RegisterEmployee("Jane", "Duo", 20, "0000", "1234", 0, CPrivilege.ALL_PRIVILEGE);
     }
     
     public CEmployee ChallengeAuthentication(String IDCode, String Password)
