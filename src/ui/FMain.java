@@ -3,6 +3,9 @@ package ui;
 import classes.*;
 import java.util.*;
 import com.google.gson.*;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class FMain extends javax.swing.JFrame
 {
@@ -13,6 +16,7 @@ public class FMain extends javax.swing.JFrame
     public FMain()
     {
         initComponents();
+        EmployeeDatabase.RegisterEmployee("John", "Doe", 20, "0000", "1234", 0, CPrivilege.ALL_PRIVILEGE);
     }
     
     @SuppressWarnings("unchecked")

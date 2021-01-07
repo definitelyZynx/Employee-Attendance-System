@@ -20,3 +20,5 @@ dist/
 nbbuild/
 nbdist/
 .nb-gradle/
+
+database.json

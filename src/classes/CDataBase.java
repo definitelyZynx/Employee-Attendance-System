@@ -1,6 +1,8 @@
 package classes;
 
 import com.google.gson.Gson;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class CDataBase
@@ -14,14 +16,18 @@ public class CDataBase
         return null;
     }
     
-    public boolean SaveToFile()
+    public void RegisterEmployee(String FirstName, String LastName, int Age, String IDCode, String Password, int Sector, int Privilege)
     {
-        String serialized = gson.toJson(this, CDataBase.class);
-        
-        return true;
+        this.EmployeeList.add(new CEmployee(new CInfoPersonal(null, FirstName, LastName, Age), new CInfoEmployment(IDCode, Password, new CSector(Sector)), new CPrivilege(Privilege)));
     }
     
-    private CEmployee            MasterUser   = null;
+    public void SaveToFile() throws IOException
+    {
+        FileWriter fw = new FileWriter("database.json");
+        fw.write(gson.toJson(this, CDataBase.class));
+        fw.close();
+    }
+    
     private ArrayList<CEmployee> EmployeeList = new ArrayList<CEmployee>();
     private transient Gson       gson         = new Gson();
 }

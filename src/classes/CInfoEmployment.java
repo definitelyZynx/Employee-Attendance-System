@@ -11,7 +11,7 @@ public class CInfoEmployment
     
     public boolean ModifyValues(CEmployee Requester, String IDCode_, String Password_, CSector Sector_)
     {
-        if (!Requester.Priviledge.HasPriviledge(this.ReqPrivWrite))
+        if (!Requester.Privilege.HasPriviledge(this.ReqPrivWrite))
             return false;
             
         if (IDCode_ != null)
@@ -28,7 +28,7 @@ public class CInfoEmployment
     
     public String GetIDCode(CEmployee Requester)
     {
-        if (!Requester.Priviledge.HasPriviledge(this.ReqPrivRead))
+        if (!Requester.Privilege.HasPriviledge(this.ReqPrivRead))
             return null;
         
         return this.IDCode;
@@ -36,7 +36,7 @@ public class CInfoEmployment
     
     public String GetPassword(CEmployee Requester)
     {
-        if (!Requester.Priviledge.HasPriviledge(this.ReqPrivRead))
+        if (!Requester.Privilege.HasPriviledge(this.ReqPrivRead))
             return null;
         
         return this.Password;
@@ -44,7 +44,7 @@ public class CInfoEmployment
     
     public CSector GetSector(CEmployee Requester)
     {
-        if (!Requester.Priviledge.HasPriviledge(this.ReqPrivRead))
+        if (!Requester.Privilege.HasPriviledge(this.ReqPrivRead))
             return null;
         
         return this.Sector;

@@ -14,7 +14,7 @@ public class CInfoPersonal
     {
         // Check priviledge
         if (Requester != this.DataOwner) // only check for priviledge if the requester is not the data owner, otherwise freely allow the data owner to modify their own basic info
-            if (!Requester.Priviledge.HasPriviledge(this.ReqPrivWrite)) // check if the requester has priviledge to write
+            if (!Requester.Privilege.HasPriviledge(this.ReqPrivWrite)) // check if the requester has priviledge to write
                 return false;
         
         if (FirstName_ != null)
