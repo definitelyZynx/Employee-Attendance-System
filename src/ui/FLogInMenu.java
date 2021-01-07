@@ -4,7 +4,6 @@ import classes.*;
 import instances.Database;
 import java.awt.Color;
 import java.awt.event.FocusEvent;
-import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 public class FLogInMenu extends javax.swing.JFrame {

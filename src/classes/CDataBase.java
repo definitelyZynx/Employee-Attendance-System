@@ -1,9 +1,16 @@
 package classes;
 
 import com.google.gson.Gson;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class CDataBase
 {
@@ -22,16 +29,38 @@ public class CDataBase
         return null;
     }
     
-    public void RegisterEmployee(String FirstName, String LastName, int Age, String IDCode, String Password, int Sector, int Privilege)
+    public final void RegisterEmployee(String FirstName, String LastName, int Age, String IDCode, String Password, int Sector, int Privilege)
     {
         this.EmployeeList.add(new CEmployee(new CInfoPersonal(null, FirstName, LastName, Age), new CInfoEmployment(IDCode, Password, new CSector(Sector)), new CPrivilege(Privilege)));
     }
     
-    public void SaveToFile() throws IOException
+    public boolean SaveToFile()
     {
-        FileWriter fw = new FileWriter("database.json");
-        fw.write(gson.toJson(this, CDataBase.class));
-        fw.close();
+        try
+        {
+            FileWriter fw = new FileWriter("database.json");
+            fw.write(gson.toJson(this, CDataBase.class));
+            fw.close();
+            return true;
+        } catch (IOException ex)
+        {
+            Logger.getLogger(CDataBase.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
+    
+    public boolean LoadFromFile()
+    {
+        try
+        {
+            CDataBase loaded_db = gson.fromJson(Files.readString(Paths.get("database.json")), CDataBase.class);
+            this.EmployeeList = loaded_db.EmployeeList;
+            return true;
+        } catch (IOException ex)
+        {
+            Logger.getLogger(CDataBase.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
     }
     
     private ArrayList<CEmployee> EmployeeList = new ArrayList<CEmployee>();
