@@ -22,7 +22,7 @@ public class FMain extends javax.swing.JFrame
         initComponents();
     }
     
-    public SessionRequestResult SetSession(CEmployee requester)
+    public SessionRequestResult RequestSession(CEmployee requester)
     {
         if (requester == SessionEmployee)
             return SessionRequestResult.ALREADY_LOGGED_IN;
@@ -30,7 +30,7 @@ public class FMain extends javax.swing.JFrame
         if (SessionEmployee != null)
             return SessionRequestResult.OCCUPIED_SESSION;
         
-        // TODO: decide whether SetSession should also check for user privilege for added "security"?
+        // TODO: decide whether RequestSession should also check for user privilege for added "security"?
         
         SessionEmployee = requester;
         return SessionRequestResult.SUCCESS;

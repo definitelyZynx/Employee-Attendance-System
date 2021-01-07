@@ -151,7 +151,7 @@ public class FTimeMenu extends javax.swing.JFrame
 
     private void AdminBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_AdminBtnActionPerformed
     {//GEN-HEADEREND:event_AdminBtnActionPerformed
-        Forms.Main.SetSession(Employee); // TODO: handle return
+        Forms.Main.RequestSession(Employee); // TODO: handle return
         Forms.Main.setEnabled(true);
         LogInInstance.dispose();
         this.dispose();
