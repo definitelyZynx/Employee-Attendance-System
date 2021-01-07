@@ -145,6 +145,7 @@ public class FTimeMenu extends javax.swing.JFrame
     private void formWindowOpened(java.awt.event.WindowEvent evt)//GEN-FIRST:event_formWindowOpened
     {//GEN-HEADEREND:event_formWindowOpened
         EmployeeName.setText(String.join(" ", Employee.Personal.GetNames()));
+        AdminBtn.setVisible(Employee.Privilege.HasPriviledge(CPrivilege.ACCESS_ATTENDANCE_DATA | CPrivilege.ACCESS_EMPLOYMENT_INFO | CPrivilege.CHANGE_ATTENDANCE_DATA | CPrivilege.CHANGE_BASIC_INFO | CPrivilege.CHANGE_EMPLOYMENT_INFO));
     }//GEN-LAST:event_formWindowOpened
 
 
