@@ -8,11 +8,13 @@ import java.util.GregorianCalendar;
 
 public class FTimeMenu extends javax.swing.JFrame
 {
+    private FMain MainInstance = null;
     private FLogInMenu LogInInstance = null;
     private CEmployee Employee = null;
     
-    public FTimeMenu(FLogInMenu LogInInstance_, CEmployee Employee_)
+    public FTimeMenu(FMain MainInstance_, FLogInMenu LogInInstance_, CEmployee Employee_)
     {
+        this.MainInstance = MainInstance_;
         this.LogInInstance = LogInInstance_;
         this.Employee = Employee_;
         initComponents();
@@ -115,6 +117,13 @@ public class FTimeMenu extends javax.swing.JFrame
         AdminBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/AdminButton.png"))); // NOI18N
         AdminBtn.setBorderPainted(false);
         AdminBtn.setContentAreaFilled(false);
+        AdminBtn.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                AdminBtnActionPerformed(evt);
+            }
+        });
         getContentPane().add(AdminBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 420, 270, -1));
 
         CancelBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/CancelButton.png"))); // NOI18N
@@ -147,6 +156,13 @@ public class FTimeMenu extends javax.swing.JFrame
         EmployeeName.setText(String.join(" ", Employee.Personal.GetNames()));
         AdminBtn.setVisible(Employee.Privilege.HasPriviledge(CPrivilege.ACCESS_ATTENDANCE_DATA | CPrivilege.ACCESS_EMPLOYMENT_INFO | CPrivilege.CHANGE_ATTENDANCE_DATA | CPrivilege.CHANGE_BASIC_INFO | CPrivilege.CHANGE_EMPLOYMENT_INFO));
     }//GEN-LAST:event_formWindowOpened
+
+    private void AdminBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_AdminBtnActionPerformed
+    {//GEN-HEADEREND:event_AdminBtnActionPerformed
+        MainInstance.setEnabled(true);
+        LogInInstance.dispose();
+        this.dispose();
+    }//GEN-LAST:event_AdminBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

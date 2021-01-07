@@ -8,12 +8,11 @@ public class FLogInMenu extends javax.swing.JFrame {
     
     private FMain MainInstance = null;
     
-    public FLogInMenu(FMain MainInstance_) {
+    public FLogInMenu(FMain MainInstance_)
+    {
         
-        this.MainInstance = MainInstance_;
-        
+        this.MainInstance = MainInstance_;    
         initComponents();
-
     }
 
     @SuppressWarnings("unchecked")
@@ -140,7 +139,7 @@ public class FLogInMenu extends javax.swing.JFrame {
             return;
         }
         
-        FTimeMenu TimeSessionWindow = new FTimeMenu(this, Employee);
+        FTimeMenu TimeSessionWindow = new FTimeMenu(MainInstance, this, Employee);
         TimeSessionWindow.setLocationRelativeTo(this);
         TimeSessionWindow.setVisible(true);
         
