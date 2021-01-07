@@ -14,27 +14,19 @@ public class FTimeMenu extends javax.swing.JFrame
     
     public FTimeMenu(FMain MainInstance_, FLogInMenu LogInInstance_, CEmployee Employee_)
     {
-        this.MainInstance = MainInstance_;
+        this.MainInstance  = MainInstance_;
         this.LogInInstance = LogInInstance_;
-        this.Employee = Employee_;
+        this.Employee      = Employee_;
         initComponents();
         
         new Thread()
         {
             public void run()
             {
-                final String[] _dayToText = new String[]
-                {
-                    "Sunday",
-                    "Monday",
-                    "Tuesday",
-                    "Wednesday",
-                    "Thursday",
-                    "Friday",
-                    "Saturday"
-                };
+                final String[] _dayToText = new String[] { "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" };
                 
-                while(true){
+                while(true)
+                {
                     Calendar cal = new GregorianCalendar();
                     
                     Date.setText(new SimpleDateFormat("MM-dd-yyyy").format(new Date()));
@@ -147,6 +139,7 @@ public class FTimeMenu extends javax.swing.JFrame
 
     private void CancelBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_CancelBtnActionPerformed
     {//GEN-HEADEREND:event_CancelBtnActionPerformed
+        LogInInstance.ClearFields();
         LogInInstance.setEnabled(true);
         this.dispose();
     }//GEN-LAST:event_CancelBtnActionPerformed

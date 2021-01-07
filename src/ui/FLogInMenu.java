@@ -10,11 +10,16 @@ public class FLogInMenu extends javax.swing.JFrame {
     
     public FLogInMenu(FMain MainInstance_)
     {
-        
         this.MainInstance = MainInstance_;    
         initComponents();
     }
 
+    public void ClearFields()
+    {
+        IDTxtField.setText("");
+        KeyTxtField.setText("");
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents()
