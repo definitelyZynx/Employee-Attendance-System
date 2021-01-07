@@ -1,6 +1,7 @@
 package classes;
 
 import com.google.gson.Gson;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -16,8 +17,8 @@ public class CDataBase
 {
     public CDataBase()
     {
-        this.RegisterEmployee("Labazmo", "Titimo", 24, "0000", "1234", 0, CPrivilege.ALL_PRIVILEGE);
-        this.RegisterEmployee("Mike", "Oxmaul", 21, "6969", "4200", 0, CPrivilege.TIME_IN | CPrivilege.TIME_OUT);
+        //this.RegisterEmployee("Labazmo", "Titimo", 24, "0000", "1234", 0, CPrivilege.ALL_PRIVILEGE);
+        //this.RegisterEmployee("Mike", "Oxmaul", 21, "6969", "4200", 0, CPrivilege.TIME_IN | CPrivilege.TIME_OUT);
     }
     
     public CEmployee ChallengeAuthentication(String IDCode, String Password)
@@ -51,6 +52,9 @@ public class CDataBase
     
     public boolean LoadFromFile()
     {
+        if (!(new File("database.json").isFile()))
+            return false;
+            
         try
         {
             CDataBase loaded_db = gson.fromJson(Files.readString(Paths.get("database.json")), CDataBase.class);
@@ -63,6 +67,11 @@ public class CDataBase
         }
     }
     
-    private ArrayList<CEmployee> EmployeeList = new ArrayList<CEmployee>();
-    private transient Gson       gson         = new Gson();
+    public int CountEmployees()
+    {
+        return this.EmployeeList.size();
+    }
+    
+    private ArrayList<CEmployee> EmployeeList = new ArrayList<>();
+    private final transient Gson gson         = new Gson();
 }

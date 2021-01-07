@@ -4,6 +4,7 @@ import classes.*;
 import instances.Database;
 import java.awt.Color;
 import java.awt.event.FocusEvent;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 public class FLogInMenu extends javax.swing.JFrame {
@@ -36,6 +37,11 @@ public class FLogInMenu extends javax.swing.JFrame {
             Sender.setText("");
             Sender.setForeground(new Color(255, 255, 255));
         }
+    }
+    
+    private boolean ValidateInput()
+    {
+        return !IDTxtField.getText().isEmpty() && !IDTxtField.getText().equals("ID Code") && !KeyTxtField.getText().isEmpty() && !KeyTxtField.getText().equals("Key Code");
     }
     
     @SuppressWarnings("unchecked")
@@ -152,6 +158,21 @@ public class FLogInMenu extends javax.swing.JFrame {
 
     private void BtnLoginActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_BtnLoginActionPerformed
     {//GEN-HEADEREND:event_BtnLoginActionPerformed
+        if (!ValidateInput())
+        {
+            LblNotification.setText("Invalid Input!");
+            return;
+        }
+        
+        // TODO: maybe make this look better
+        if (Database.Instance.CountEmployees() == 0)
+        {
+            Database.Instance.RegisterEmployee("First Name", "Last Name", 1, IDTxtField.getText(), KeyTxtField.getText(), 0, CPrivilege.ALL_PRIVILEGE);
+            JOptionPane.showMessageDialog(this, "This account is now registered as an admin!\n\nPlease setup your profile in the admin panel.", "First time setup", JOptionPane.INFORMATION_MESSAGE);
+            Database.Instance.SaveToFile();
+        }
+            
+        
         CEmployee Employee = Database.Instance.ChallengeAuthentication(IDTxtField.getText(), KeyTxtField.getText());
         
         if (Employee == null)
@@ -170,6 +191,14 @@ public class FLogInMenu extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt)//GEN-FIRST:event_formWindowOpened
     {//GEN-HEADEREND:event_formWindowOpened
         BtnLogin.requestFocus();
+        
+        // TODO: maybe make this look better
+        if (Database.Instance.CountEmployees() == 0)
+        {
+            JOptionPane.showMessageDialog(this, "Empty database detected!\n\nDue to the circumstance that the database is empty the first login will be treated as a registration for an Admin user that can be used to login into the Admin Panel", "First time setup", JOptionPane.INFORMATION_MESSAGE);
+            LblNotification.setText("First time setup!");
+        }
+        
     }//GEN-LAST:event_formWindowOpened
 
 

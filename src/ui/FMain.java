@@ -3,6 +3,7 @@ package ui;
 import classes.*;
 import java.util.*;
 import com.google.gson.*;
+import instances.Database;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -40,6 +41,8 @@ public class FMain extends javax.swing.JFrame
     {//GEN-HEADEREND:event_formWindowOpened
         setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
         getContentPane().setBackground(new java.awt.Color(18, 18, 18));
+        
+        Database.Instance.LoadFromFile();
         
         FLogInMenu LoginSessionWindow = new FLogInMenu(this);
         LoginSessionWindow.setLocationRelativeTo(this);
