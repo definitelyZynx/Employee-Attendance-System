@@ -142,13 +142,11 @@ public class FLogInMenu extends javax.swing.JFrame {
             return;
         }
         
-        MainInstance.setEnabled(true);
-        this.dispose();
-        
         FTimeMenu TimeSessionWindow = new FTimeMenu();
         TimeSessionWindow.setLocationRelativeTo(this);
         TimeSessionWindow.setVisible(true);
         
+        this.dispose();
     }//GEN-LAST:event_BtnLoginActionPerformed
 
 
