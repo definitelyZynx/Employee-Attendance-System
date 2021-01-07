@@ -127,6 +127,7 @@ public class FTimeMenu extends javax.swing.JFrame
 
     private void CancelBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_CancelBtnActionPerformed
     {//GEN-HEADEREND:event_CancelBtnActionPerformed
+        LogInInstance.setEnabled(true);
         this.dispose();
     }//GEN-LAST:event_CancelBtnActionPerformed
 
