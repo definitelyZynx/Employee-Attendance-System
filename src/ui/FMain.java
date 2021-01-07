@@ -9,14 +9,10 @@ import java.util.logging.Logger;
 
 public class FMain extends javax.swing.JFrame
 {
-    
-    private CDataBase EmployeeDatabase = new CDataBase();
-    private CEmployee CurrentlyAuthenticatedAccount = null;
-    
     public FMain()
     {
         initComponents();
-        EmployeeDatabase.RegisterEmployee("John", "Doe", 20, "0000", "1234", 0, CPrivilege.ALL_PRIVILEGE);
+        
     }
     
     @SuppressWarnings("unchecked")
@@ -35,17 +31,7 @@ public class FMain extends javax.swing.JFrame
                 formWindowOpened(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

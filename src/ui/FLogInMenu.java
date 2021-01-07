@@ -1,6 +1,7 @@
 package ui;
 
 import classes.*;
+import instances.Database;
 import java.awt.Color;
 
 public class FLogInMenu extends javax.swing.JFrame {
@@ -131,8 +132,7 @@ public class FLogInMenu extends javax.swing.JFrame {
 
     private void BtnLoginActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_BtnLoginActionPerformed
     {//GEN-HEADEREND:event_BtnLoginActionPerformed
-      
-        CEmployee Employee = null; //MainInstance.ChallengeAuth(IDTxtField.getText(), KeyTxtField.getText());
+        CEmployee Employee = Database.Instance.ChallengeAuthentication(IDTxtField.getText(), KeyTxtField.getText());
         
         if (Employee == null)
         {
@@ -140,10 +140,11 @@ public class FLogInMenu extends javax.swing.JFrame {
             return;
         }
         
-        FTimeMenu TimeSessionWindow = new FTimeMenu();
+        FTimeMenu TimeSessionWindow = new FTimeMenu(this);
         TimeSessionWindow.setLocationRelativeTo(this);
         TimeSessionWindow.setVisible(true);
         
+        this.setEnabled(false);
     }//GEN-LAST:event_BtnLoginActionPerformed
 
 

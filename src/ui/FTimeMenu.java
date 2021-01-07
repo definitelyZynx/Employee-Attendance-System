@@ -5,9 +5,12 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-public class FTimeMenu extends javax.swing.JFrame {
-    
-    public FTimeMenu() {
+public class FTimeMenu extends javax.swing.JFrame
+{
+    private FLogInMenu LogInInstance = null;
+    public FTimeMenu(FLogInMenu LogInInstance_)
+    {
+        this.LogInInstance = LogInInstance_;
         initComponents();
         
         new Thread()
@@ -106,6 +109,13 @@ public class FTimeMenu extends javax.swing.JFrame {
         CancelBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/CancelButton.png"))); // NOI18N
         CancelBtn.setBorderPainted(false);
         CancelBtn.setContentAreaFilled(false);
+        CancelBtn.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                CancelBtnActionPerformed(evt);
+            }
+        });
         getContentPane().add(CancelBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 530, 460, -1));
 
         Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/TimeMenu.png"))); // NOI18N
@@ -114,6 +124,11 @@ public class FTimeMenu extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void CancelBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_CancelBtnActionPerformed
+    {//GEN-HEADEREND:event_CancelBtnActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_CancelBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
