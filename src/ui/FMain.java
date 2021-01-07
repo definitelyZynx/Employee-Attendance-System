@@ -2,12 +2,12 @@ package ui;
 
 import classes.*;
 import java.util.*;
-import com.google.gson.Gson;
+import com.google.gson.*;
 
 public class FMain extends javax.swing.JFrame
 {
     private ArrayList<CEmployee> EmployeeList = new ArrayList<CEmployee>();
-    
+    private Gson gson = new Gson();
     private CEmployee CurrentlyAuthenticatedAccount = null;
     
     public FMain()
