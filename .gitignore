@@ -11,6 +11,12 @@
 *.rar
 hs_err_pid*
 
-Employee-Attendace-System/nbproject/private/
-Employee-Attendace-System/build/
-/Employee-Attendace-System/dist/
+nbproject/private/
+build/
+dist/
+**/nbproject/private/
+**/nbproject/Makefile-*.mk
+**/nbproject/Package-*.bash
+nbbuild/
+nbdist/
+.nb-gradle/

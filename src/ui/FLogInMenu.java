@@ -19,7 +19,8 @@ public class FLogInMenu extends javax.swing.JFrame {
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         LblNotification = new javax.swing.JLabel();
         IDTxtField = new javax.swing.JTextField();
@@ -31,8 +32,10 @@ public class FLogInMenu extends javax.swing.JFrame {
         setAlwaysOnTop(true);
         setMaximumSize(new java.awt.Dimension(460, 630));
         setUndecorated(true);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowClosing(java.awt.event.WindowEvent evt) {
+        addWindowListener(new java.awt.event.WindowAdapter()
+        {
+            public void windowClosing(java.awt.event.WindowEvent evt)
+            {
                 formWindowClosing(evt);
             }
         });
@@ -48,11 +51,14 @@ public class FLogInMenu extends javax.swing.JFrame {
         IDTxtField.setForeground(new java.awt.Color(255, 255, 255));
         IDTxtField.setToolTipText("ID Code");
         IDTxtField.setBorder(null);
-        IDTxtField.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
+        IDTxtField.addFocusListener(new java.awt.event.FocusAdapter()
+        {
+            public void focusGained(java.awt.event.FocusEvent evt)
+            {
                 IDTxtFieldFocusGained(evt);
             }
-            public void focusLost(java.awt.event.FocusEvent evt) {
+            public void focusLost(java.awt.event.FocusEvent evt)
+            {
                 IDTxtFieldFocusLost(evt);
             }
         });
@@ -61,11 +67,14 @@ public class FLogInMenu extends javax.swing.JFrame {
         KeyTxtField.setBackground(new java.awt.Color(18, 18, 18));
         KeyTxtField.setForeground(new java.awt.Color(255, 255, 255));
         KeyTxtField.setBorder(null);
-        KeyTxtField.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
+        KeyTxtField.addFocusListener(new java.awt.event.FocusAdapter()
+        {
+            public void focusGained(java.awt.event.FocusEvent evt)
+            {
                 KeyTxtFieldFocusGained(evt);
             }
-            public void focusLost(java.awt.event.FocusEvent evt) {
+            public void focusLost(java.awt.event.FocusEvent evt)
+            {
                 KeyTxtFieldFocusLost(evt);
             }
         });
@@ -76,8 +85,10 @@ public class FLogInMenu extends javax.swing.JFrame {
         BtnLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/LoginButton.png"))); // NOI18N
         BtnLogin.setBorderPainted(false);
         BtnLogin.setContentAreaFilled(false);
-        BtnLogin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        BtnLogin.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 BtnLoginActionPerformed(evt);
             }
         });
