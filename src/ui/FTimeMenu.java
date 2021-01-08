@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import javax.swing.JOptionPane;
 
 public class FTimeMenu extends javax.swing.JFrame
 {
@@ -151,7 +152,13 @@ public class FTimeMenu extends javax.swing.JFrame
 
     private void AdminBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_AdminBtnActionPerformed
     {//GEN-HEADEREND:event_AdminBtnActionPerformed
-        Forms.Main.RequestSession(Employee); // TODO: handle return
+        FMain.SessionRequestResult Request = Forms.Main.RequestSession(Employee);
+        if (Request != FMain.SessionRequestResult.SUCCESS)
+        {
+            JOptionPane.showMessageDialog(this, "Failed to create session due to: " + Request.name(), "Request Session", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+            
         Forms.Main.setEnabled(true);
         LogInInstance.dispose();
         this.dispose();

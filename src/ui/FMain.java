@@ -30,8 +30,6 @@ public class FMain extends javax.swing.JFrame
         if (SessionEmployee != null)
             return SessionRequestResult.OCCUPIED_SESSION;
         
-        // TODO: decide whether RequestSession should also check for user privilege for added "security"?
-        
         SessionEmployee = requester;
         return SessionRequestResult.SUCCESS;
     }
