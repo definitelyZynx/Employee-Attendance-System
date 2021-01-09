@@ -3,9 +3,12 @@ package ui;
 import classes.*;
 import instances.Forms;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.Locale;
 import javax.swing.JOptionPane;
 
 public class FTimeMenu extends javax.swing.JFrame
@@ -28,9 +31,10 @@ public class FTimeMenu extends javax.swing.JFrame
                 
                 while(true)
                 {
+                    LocalDateTime CurrentDT = LocalDateTime.now();
                     Calendar cal = new GregorianCalendar();
                     
-                    Date.setText(new SimpleDateFormat("MM-dd-yyyy").format(new Date()));
+                    Date.setText(DateTimeFormatter.ofPattern("dd / MM / yyyy").format(CurrentDT));
                     Clock.setText(String.format("%02d:%02d  %s", cal.get(Calendar.HOUR), cal.get(Calendar.MINUTE), cal.get(Calendar.AM_PM) == 1 ? "PM" : "AM"));
                     Day.setText(_dayToText[cal.get(Calendar.DAY_OF_WEEK) - 1]);
                     

@@ -81,10 +81,14 @@ public class FLogInMenu extends javax.swing.JFrame
         getContentPane().add(LblNotification, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 520, 460, -1));
 
         BtnLogin.setBackground(null);
-        BtnLogin.setForeground(null);
+        BtnLogin.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        BtnLogin.setForeground(new java.awt.Color(0, 0, 0));
         BtnLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/LoginButton.png"))); // NOI18N
+        BtnLogin.setText("Login");
+        BtnLogin.setToolTipText("");
         BtnLogin.setBorderPainted(false);
         BtnLogin.setContentAreaFilled(false);
+        BtnLogin.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         BtnLogin.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -160,6 +164,8 @@ public class FLogInMenu extends javax.swing.JFrame
 
     private void BtnLoginActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_BtnLoginActionPerformed
     {//GEN-HEADEREND:event_BtnLoginActionPerformed
+        // TODO: Change the button font
+        
         if (!ValidateInput())
         {
             LblNotification.setText("Invalid Input!");
@@ -171,8 +177,11 @@ public class FLogInMenu extends javax.swing.JFrame
         {
             Database.Instance.EmployeeRegister("First Name", "Last Name", 1, IDTxtField.getText(), KeyTxtField.getText(), 0, CPrivilege.ALL_PRIVILEGE);
             JOptionPane.showMessageDialog(this, "This account is now registered as an admin!\n\nPlease setup your profile in the admin panel.", "First time setup", JOptionPane.INFORMATION_MESSAGE);
+            BtnLogin.setText("Login");
             Database.Instance.SaveToFile();
         }
+        
+        LblNotification.setText("");
         
         CEmployee Employee = Database.Instance.ChallengeAuthentication(IDTxtField.getText(), KeyTxtField.getText());
         
@@ -197,6 +206,7 @@ public class FLogInMenu extends javax.swing.JFrame
         if (Database.Instance.CountEmployees() == 0)
         {
             JOptionPane.showMessageDialog(this, "Empty database detected!\n\nDue to the circumstance that the database is empty the first login will be treated as a registration for an Admin user that can be used to login into the Admin Panel", "First time setup", JOptionPane.INFORMATION_MESSAGE);
+            BtnLogin.setText("Register");
             LblNotification.setText("First time setup!");
         }
         
