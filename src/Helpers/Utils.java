@@ -6,6 +6,11 @@ public class Utils
 {
     static final Random RngInstance = new Random();
     
+    public static String GenerateRandomString()
+    {
+        return GenerateRandomString(8);
+    }
+    
     public static String GenerateRandomString(int Length)
     {
         return GenerateRandomString(Length, "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz");
