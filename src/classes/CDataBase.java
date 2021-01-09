@@ -33,7 +33,7 @@ public class CDataBase
         this.Employees.put(Identifier, new CEmployee(Identifier, new CInfoPersonal(null, FirstName, LastName, Age), new CInfoEmployment(IDCode, Password, new CSector(Sector)), new CPrivilege(Privilege)));
     }
     
-    public boolean SaveToFile()
+    public final boolean SaveToFile()
     {
         try
         {
@@ -49,7 +49,7 @@ public class CDataBase
         }
     }
     
-    public boolean LoadFromFile()
+    public final boolean LoadFromFile()
     {
         if (!(new File("database.json").isFile()))
             return false;
@@ -66,7 +66,7 @@ public class CDataBase
         }
     }
     
-    public int CountEmployees()
+    public final int CountEmployees()
     {
         return this.Employees.size();
     }

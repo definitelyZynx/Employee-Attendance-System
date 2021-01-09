@@ -21,6 +21,7 @@ public class FTimeMenu extends javax.swing.JFrame
         
         new Thread()
         {
+            @Override
             public void run()
             {
                 final String[] _dayToText = new String[] { "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" };
@@ -37,7 +38,7 @@ public class FTimeMenu extends javax.swing.JFrame
                     {
                         Thread.sleep(1000);
                     }
-                    catch (Exception e) {}
+                    catch (InterruptedException e) {}
                 }
             }
             

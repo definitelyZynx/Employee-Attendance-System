@@ -18,8 +18,11 @@ public class FLogInMenu extends javax.swing.JFrame
 
     public void ClearFields()
     {
-        IDTxtField.setText("");
-        KeyTxtField.setText("");
+        IDTxtField.setText("ID Code");
+        IDTxtField.setForeground(new Color(153, 153, 153));
+        
+        KeyTxtField.setText("Key Code");
+        KeyTxtField.setForeground(new Color(153, 153, 153));
     }
     
     private void HandleInputPostEvent(java.awt.event.FocusEvent event, String subtext)
