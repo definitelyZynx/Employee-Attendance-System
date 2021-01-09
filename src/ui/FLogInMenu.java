@@ -169,7 +169,7 @@ public class FLogInMenu extends javax.swing.JFrame
         // TODO: maybe make this look better
         if (Database.Instance.CountEmployees() == 0)
         {
-            Database.Instance.RegisterEmployee("First Name", "Last Name", 1, IDTxtField.getText(), KeyTxtField.getText(), 0, CPrivilege.ALL_PRIVILEGE);
+            Database.Instance.EmployeeRegister("First Name", "Last Name", 1, IDTxtField.getText(), KeyTxtField.getText(), 0, CPrivilege.ALL_PRIVILEGE);
             JOptionPane.showMessageDialog(this, "This account is now registered as an admin!\n\nPlease setup your profile in the admin panel.", "First time setup", JOptionPane.INFORMATION_MESSAGE);
             Database.Instance.SaveToFile();
         }

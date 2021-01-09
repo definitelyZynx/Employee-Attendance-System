@@ -27,11 +27,28 @@ public class CDataBase
         return null;
     }
     
-    public final void RegisterEmployee(String FirstName, String LastName, int Age, String IDCode, String Password, int Sector, int Privilege)
+    public final void EmployeeRegister(String FirstName, String LastName, int Age, String IDCode, String Password, int Sector, int Privilege)
     {
         String Identifier = Utils.GenerateRandomString();
         this.Employees.put(Identifier, new CEmployee(Identifier, new CInfoPersonal(null, FirstName, LastName, Age), new CInfoEmployment(IDCode, Password, new CSector(Sector)), new CPrivilege(Privilege)));
     }
+    
+    public void EmployeeRemove(String Identifier)
+    {
+        this.Employees.remove(Identifier);
+    }
+    
+    public void EmployeeRemove(CEmployee Employee)
+    {
+        this.Employees.remove(Employee.GetIdentifier());
+    }
+    
+    public CEmployee EmployeeGet(String Identifier)
+    {
+        return this.Employees.get(Identifier);
+    }
+    
+    // TODO: DataLoadToTable - load all the info into a JTable or something similar
     
     public final boolean SaveToFile()
     {
