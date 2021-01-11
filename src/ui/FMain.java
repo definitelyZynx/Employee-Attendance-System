@@ -33,6 +33,13 @@ public class FMain extends javax.swing.JFrame
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void DisplayLogin()
+    {
+        FLogInMenu LoginSessionWindow = new FLogInMenu();
+        LoginSessionWindow.setLocationRelativeTo(this);
+        LoginSessionWindow.setVisible(true);
+    }
+    
     private void formWindowOpened(java.awt.event.WindowEvent evt)//GEN-FIRST:event_formWindowOpened
     {//GEN-HEADEREND:event_formWindowOpened
         setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
@@ -40,9 +47,7 @@ public class FMain extends javax.swing.JFrame
         
         Database.Instance.LoadFromFile();
         
-        FLogInMenu LoginSessionWindow = new FLogInMenu();
-        LoginSessionWindow.setLocationRelativeTo(this);
-        LoginSessionWindow.setVisible(true);
+        DisplayLogin();
         this.setEnabled(false);
     }//GEN-LAST:event_formWindowOpened
 

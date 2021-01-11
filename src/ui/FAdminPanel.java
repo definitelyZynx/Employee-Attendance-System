@@ -1,6 +1,7 @@
 package ui;
 
 import classes.CEmployee;
+import instances.Forms;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 
@@ -35,6 +36,12 @@ public class FAdminPanel extends javax.swing.JFrame
         return SessionRequestResult.SUCCESS;
     }
     
+    private void EndSession()
+    {
+        Forms.Main.DisplayLogin();
+        this.dispose();
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents()
@@ -59,6 +66,10 @@ public class FAdminPanel extends javax.swing.JFrame
         setType(java.awt.Window.Type.POPUP);
         addWindowListener(new java.awt.event.WindowAdapter()
         {
+            public void windowClosing(java.awt.event.WindowEvent evt)
+            {
+                formWindowClosing(evt);
+            }
             public void windowOpened(java.awt.event.WindowEvent evt)
             {
                 formWindowOpened(evt);
@@ -102,6 +113,13 @@ public class FAdminPanel extends javax.swing.JFrame
         ExitButton.setBorderPainted(false);
         ExitButton.setContentAreaFilled(false);
         ExitButton.setFocusable(false);
+        ExitButton.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
+                ExitButtonMouseClicked(evt);
+            }
+        });
         getContentPane().add(ExitButton);
         ExitButton.setBounds(1230, 18, 33, 40);
 
@@ -236,12 +254,22 @@ public class FAdminPanel extends javax.swing.JFrame
     private void formWindowOpened(java.awt.event.WindowEvent evt)//GEN-FIRST:event_formWindowOpened
     {//GEN-HEADEREND:event_formWindowOpened
         this.setSize(1296, 759);
-        
         Dimension DisplaySize = Toolkit.getDefaultToolkit().getScreenSize();
-        
         this.setLocation((int)(DisplaySize.getWidth() / 2 - this.getWidth() / 2), (int)(DisplaySize.getHeight() / 2 - this.getHeight() / 2));
         
+        AdminName.setText(String.join(" ", SessionEmployee.Personal.GetNames()));
+        
     }//GEN-LAST:event_formWindowOpened
+
+    private void ExitButtonMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_ExitButtonMouseClicked
+    {//GEN-HEADEREND:event_ExitButtonMouseClicked
+        this.EndSession();
+    }//GEN-LAST:event_ExitButtonMouseClicked
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt)//GEN-FIRST:event_formWindowClosing
+    {//GEN-HEADEREND:event_formWindowClosing
+        this.EndSession();
+    }//GEN-LAST:event_formWindowClosing
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddBtn;
