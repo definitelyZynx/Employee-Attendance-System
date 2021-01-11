@@ -27,10 +27,13 @@ public class CDataBase
         return null;
     }
     
-    public final void EmployeeRegister(String FirstName, String LastName, int Age, String IDCode, String Password, int Sector, int Privilege)
+    public final CEmployee EmployeeRegister(String FirstName, String LastName, int Age, String IDCode, String Password, int Sector, int Privilege)
     {
         String Identifier = Utils.GenerateRandomString();
-        this.Employees.put(Identifier, new CEmployee(Identifier, new CInfoPersonal(null, FirstName, LastName, Age), new CInfoEmployment(IDCode, Password, new CSector(Sector)), new CPrivilege(Privilege)));
+        CEmployee Result = new CEmployee(Identifier, new CInfoPersonal(null, FirstName, LastName, Age), new CInfoEmployment(IDCode, Password, new CSector(Sector)), new CPrivilege(Privilege));
+        this.Employees.put(Identifier, Result);
+        
+        return Result;
     }
     
     public void EmployeeRemove(String Identifier)

@@ -39,5 +39,10 @@ public class CInfoAttendance
         return AttendanceState.FINISHED; // Cant timein or timeout if the user has filled the quota for today
     }
     
+    public ArrayList<CAttendanceData> GetAllAttendance()
+    {
+        return Attendance;
+    }
+    
     private ArrayList<CAttendanceData> Attendance = new ArrayList<>();
 }
