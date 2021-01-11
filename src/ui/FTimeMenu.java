@@ -57,8 +57,7 @@ public class FTimeMenu extends javax.swing.JFrame
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         TimeInOutBtn = new javax.swing.JButton();
         Clock = new javax.swing.JLabel();
@@ -73,25 +72,22 @@ public class FTimeMenu extends javax.swing.JFrame
         setAlwaysOnTop(true);
         setMaximumSize(new java.awt.Dimension(460, 629));
         setUndecorated(true);
-        addWindowListener(new java.awt.event.WindowAdapter()
-        {
-            public void windowOpened(java.awt.event.WindowEvent evt)
-            {
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        TimeInOutBtn.setFont(new java.awt.Font("Gotham Black", 0, 13)); // NOI18N
         TimeInOutBtn.setForeground(new java.awt.Color(0, 0, 0));
         TimeInOutBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/TimeInOutButton.png"))); // NOI18N
         TimeInOutBtn.setText("ATTENDANCE_METHOD");
         TimeInOutBtn.setBorderPainted(false);
         TimeInOutBtn.setContentAreaFilled(false);
         TimeInOutBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        TimeInOutBtn.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        TimeInOutBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TimeInOutBtnActionPerformed(evt);
             }
         });
@@ -124,10 +120,8 @@ public class FTimeMenu extends javax.swing.JFrame
         AdminBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/AdminButton.png"))); // NOI18N
         AdminBtn.setBorderPainted(false);
         AdminBtn.setContentAreaFilled(false);
-        AdminBtn.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        AdminBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AdminBtnActionPerformed(evt);
             }
         });
@@ -136,10 +130,8 @@ public class FTimeMenu extends javax.swing.JFrame
         CancelBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/CancelButton.png"))); // NOI18N
         CancelBtn.setBorderPainted(false);
         CancelBtn.setContentAreaFilled(false);
-        CancelBtn.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        CancelBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CancelBtnActionPerformed(evt);
             }
         });
