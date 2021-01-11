@@ -51,6 +51,7 @@ public class FLogInMenu extends javax.swing.JFrame
     private void initComponents()
     {
 
+        lblDebug = new javax.swing.JLabel();
         LblNotification = new javax.swing.JLabel();
         BtnLogin = new javax.swing.JButton();
         IDTxtField = new javax.swing.JTextField();
@@ -73,6 +74,17 @@ public class FLogInMenu extends javax.swing.JFrame
             }
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblDebug.setForeground(new java.awt.Color(255, 0, 0));
+        lblDebug.setText("[ DEBUG ]");
+        lblDebug.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
+                lblDebugMouseClicked(evt);
+            }
+        });
+        getContentPane().add(lblDebug, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 610, -1, -1));
 
         LblNotification.setFont(new java.awt.Font("Gotham Light", 0, 14)); // NOI18N
         LblNotification.setForeground(new java.awt.Color(255, 51, 51));
@@ -212,6 +224,11 @@ public class FLogInMenu extends javax.swing.JFrame
         
     }//GEN-LAST:event_formWindowOpened
 
+    private void lblDebugMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_lblDebugMouseClicked
+    {//GEN-HEADEREND:event_lblDebugMouseClicked
+        new FDebug().setVisible(true);
+    }//GEN-LAST:event_lblDebugMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Background;
@@ -219,5 +236,6 @@ public class FLogInMenu extends javax.swing.JFrame
     private javax.swing.JTextField IDTxtField;
     private javax.swing.JTextField KeyTxtField;
     private javax.swing.JLabel LblNotification;
+    private javax.swing.JLabel lblDebug;
     // End of variables declaration//GEN-END:variables
 }

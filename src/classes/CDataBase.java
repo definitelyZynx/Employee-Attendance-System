@@ -52,12 +52,9 @@ public class CDataBase
     
     public final boolean SaveToFile()
     {
-        try
+        try (FileWriter fw = new FileWriter("database.json"))
         {
-            try (FileWriter fw = new FileWriter("database.json"))
-            {
-                fw.write(gson.toJson(this, CDataBase.class));
-            }
+            fw.write(gson.toJson(this, CDataBase.class));
             return true;
         } catch (IOException ex)
         {
