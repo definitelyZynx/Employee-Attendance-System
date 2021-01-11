@@ -7,31 +7,9 @@ import instances.Forms;
 public class FMain extends javax.swing.JFrame
 {
     
-    public enum SessionRequestResult
-    {
-        SUCCESS,
-        ALREADY_LOGGED_IN,
-        INSUFFICIENT_CREDENTIALS,
-        OCCUPIED_SESSION,
-    }
-    
-    private CEmployee SessionEmployee = null;
-    
     public FMain()
     {
         initComponents();
-    }
-    
-    public SessionRequestResult RequestSession(CEmployee requester)
-    {
-        if (requester == SessionEmployee)
-            return SessionRequestResult.ALREADY_LOGGED_IN;
-        
-        if (SessionEmployee != null)
-            return SessionRequestResult.OCCUPIED_SESSION;
-        
-        SessionEmployee = requester;
-        return SessionRequestResult.SUCCESS;
     }
     
     @SuppressWarnings("unchecked")

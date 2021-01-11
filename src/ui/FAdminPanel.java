@@ -1,18 +1,44 @@
 package ui;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import classes.CEmployee;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 
-public class FAdminPanel extends javax.swing.JFrame {
+public class FAdminPanel extends javax.swing.JFrame
+{
 
-    public FAdminPanel() {
+    public enum SessionRequestResult
+    {
+        SUCCESS,
+        ALREADY_LOGGED_IN,
+        INSUFFICIENT_CREDENTIALS,
+        OCCUPIED_SESSION,
+    }
+    
+    private CEmployee SessionEmployee = null;
+    
+    public FAdminPanel(CEmployee SessionEmployee_)
+    {
+        this.SessionEmployee = SessionEmployee_;
         initComponents();
     }
 
+    public SessionRequestResult RequestSession(CEmployee requester)
+    {
+        if (requester == SessionEmployee)
+            return SessionRequestResult.ALREADY_LOGGED_IN;
+        
+        if (SessionEmployee != null)
+            return SessionRequestResult.OCCUPIED_SESSION;
+        
+        SessionEmployee = requester;
+        return SessionRequestResult.SUCCESS;
+    }
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         AddBtn = new javax.swing.JButton();
         EditBtn = new javax.swing.JButton();
@@ -24,38 +50,60 @@ public class FAdminPanel extends javax.swing.JFrame {
         Table = new javax.swing.JTable();
         Background = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Attendance Panel");
+        setAlwaysOnTop(true);
+        setMaximumSize(new java.awt.Dimension(9999, 9999));
+        setResizable(false);
+        setSize(new java.awt.Dimension(1280, 720));
+        setType(java.awt.Window.Type.POPUP);
+        addWindowListener(new java.awt.event.WindowAdapter()
+        {
+            public void windowOpened(java.awt.event.WindowEvent evt)
+            {
+                formWindowOpened(evt);
+            }
+        });
+        getContentPane().setLayout(null);
 
         AddBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/AddButton.png"))); // NOI18N
         AddBtn.setBorderPainted(false);
         AddBtn.setContentAreaFilled(false);
-        getContentPane().add(AddBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 630, 130, 40));
+        getContentPane().add(AddBtn);
+        AddBtn.setBounds(820, 630, 130, 40);
 
         EditBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/EditButton.png"))); // NOI18N
         EditBtn.setBorderPainted(false);
         EditBtn.setContentAreaFilled(false);
-        getContentPane().add(EditBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 630, 130, 40));
+        getContentPane().add(EditBtn);
+        EditBtn.setBounds(960, 630, 130, 40);
 
         DeleteBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/DeleteButton.png"))); // NOI18N
         DeleteBtn.setBorderPainted(false);
         DeleteBtn.setContentAreaFilled(false);
-        getContentPane().add(DeleteBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 630, 130, 40));
+        getContentPane().add(DeleteBtn);
+        DeleteBtn.setBounds(1100, 630, 130, 40);
 
         AdminName.setFont(new java.awt.Font("Gotham Black", 0, 16)); // NOI18N
         AdminName.setForeground(new java.awt.Color(255, 255, 255));
+        AdminName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         AdminName.setText("Firstname Lastname");
-        getContentPane().add(AdminName, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, -1, -1));
+        getContentPane().add(AdminName);
+        AdminName.setBounds(5, 280, 200, 21);
 
         Date.setFont(new java.awt.Font("Gotham Black", 0, 14)); // NOI18N
         Date.setForeground(new java.awt.Color(255, 255, 255));
         Date.setText("MM DD, YYYY");
-        getContentPane().add(Date, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 30, 100, 20));
+        getContentPane().add(Date);
+        Date.setBounds(1080, 25, 100, 20);
 
         ExitButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/ExitButton.png"))); // NOI18N
+        ExitButton.setAlignmentY(0.0F);
         ExitButton.setBorderPainted(false);
         ExitButton.setContentAreaFilled(false);
-        getContentPane().add(ExitButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1230, 20, -1, 40));
+        ExitButton.setFocusable(false);
+        getContentPane().add(ExitButton);
+        ExitButton.setBounds(1230, 18, 33, 40);
 
         JScrollPane.setBackground(new java.awt.Color(40, 40, 40));
         JScrollPane.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
@@ -66,7 +114,8 @@ public class FAdminPanel extends javax.swing.JFrame {
         Table.setBackground(new java.awt.Color(40, 40, 40));
         Table.setForeground(new java.awt.Color(255, 255, 255));
         Table.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+            new Object [][]
+            {
                 {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
@@ -97,22 +146,28 @@ public class FAdminPanel extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null}
             },
-            new String [] {
+            new String []
+            {
                 "Employee", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"
             }
-        ) {
-            Class[] types = new Class [] {
+        )
+        {
+            Class[] types = new Class []
+            {
                 java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
-            boolean[] canEdit = new boolean [] {
+            boolean[] canEdit = new boolean []
+            {
                 false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false
             };
 
-            public Class getColumnClass(int columnIndex) {
+            public Class getColumnClass(int columnIndex)
+            {
                 return types [columnIndex];
             }
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
+            public boolean isCellEditable(int rowIndex, int columnIndex)
+            {
                 return canEdit [columnIndex];
             }
         });
@@ -120,11 +175,10 @@ public class FAdminPanel extends javax.swing.JFrame {
         Table.setGridColor(new java.awt.Color(35, 42, 50));
         Table.setName(""); // NOI18N
         Table.setShowGrid(false);
-        Table.setShowHorizontalLines(false);
-        Table.setShowVerticalLines(false);
         Table.getTableHeader().setReorderingAllowed(false);
         JScrollPane.setViewportView(Table);
-        if (Table.getColumnModel().getColumnCount() > 0) {
+        if (Table.getColumnModel().getColumnCount() > 0)
+        {
             Table.getColumnModel().getColumn(0).setResizable(false);
             Table.getColumnModel().getColumn(0).setPreferredWidth(700);
             Table.getColumnModel().getColumn(1).setResizable(false);
@@ -169,26 +223,25 @@ public class FAdminPanel extends javax.swing.JFrame {
             Table.getColumnModel().getColumn(31).setResizable(false);
         }
 
-        getContentPane().add(JScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 140, 960, 480));
+        getContentPane().add(JScrollPane);
+        JScrollPane.setBounds(270, 140, 960, 480);
 
         Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/AdminPanel.png"))); // NOI18N
-        Background.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2));
-        getContentPane().add(Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(Background);
+        Background.setBounds(0, 0, 1280, 720);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new FAdminPanel().setVisible(true);
-            }
-        });
-    }
+    private void formWindowOpened(java.awt.event.WindowEvent evt)//GEN-FIRST:event_formWindowOpened
+    {//GEN-HEADEREND:event_formWindowOpened
+        this.setSize(1296, 759);
+        
+        Dimension DisplaySize = Toolkit.getDefaultToolkit().getScreenSize();
+        
+        this.setLocation((int)(DisplaySize.getWidth() / 2 - this.getWidth() / 2), (int)(DisplaySize.getHeight() / 2 - this.getHeight() / 2));
+        
+    }//GEN-LAST:event_formWindowOpened
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddBtn;
