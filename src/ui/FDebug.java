@@ -123,7 +123,7 @@ public class FDebug extends javax.swing.JFrame
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton2ActionPerformed
     {//GEN-HEADEREND:event_jButton2ActionPerformed
-        CAttendanceData data = DebugEmployee.Attendance.GetAllAttendance().get(Integer.getInteger(tbIndex.getText()));
+        CAttendanceData data = DebugEmployee.Attendance.GetAllAttendance().get(1);
         JOptionPane.showMessageDialog(this, "Date: " + data.Date.toString() + "\nState: " + data.State.toString());
     }//GEN-LAST:event_jButton2ActionPerformed
 
