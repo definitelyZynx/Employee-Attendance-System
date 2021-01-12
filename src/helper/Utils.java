@@ -1,5 +1,7 @@
 package helper;
 
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.Random;
 
 public class Utils
@@ -24,5 +26,11 @@ public class Utils
             Result += CharSet.charAt(RngInstance.nextInt(CharSet.length() - 1));
         
         return Result;
+    }
+    
+    public static int[] GetDateDMY()
+    {
+        Calendar CalendarInst = new GregorianCalendar();
+        return new int[] { CalendarInst.get(Calendar.DATE), CalendarInst.get(Calendar.MONTH) + 1, CalendarInst.get(Calendar.YEAR) };
     }
 }

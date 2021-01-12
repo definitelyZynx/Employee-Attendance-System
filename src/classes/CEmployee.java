@@ -19,6 +19,6 @@ public class CEmployee
     private String          Identifier = null;
     public  CInfoPersonal   Personal;
     public  CInfoEmployment Employment;
-    public  CInfoAttendance Attendance = new CInfoAttendance();
+    public  CAttendance     Attendance = new CAttendance();
     public  CPrivilege      Privilege;
 }

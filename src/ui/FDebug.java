@@ -1,11 +1,15 @@
 package ui;
 
+import classes.CAttendance;
 import classes.CAttendanceData;
+import classes.CAttendanceSegment;
 import classes.CEmployee;
 import classes.CPrivilege;
 import instances.Database;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import javax.swing.JOptionPane;
 
 public class FDebug extends javax.swing.JFrame
@@ -30,6 +34,7 @@ public class FDebug extends javax.swing.JFrame
         jButton4 = new javax.swing.JButton();
         tbIndex = new javax.swing.JTextField();
         jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("debugging form");
@@ -82,6 +87,15 @@ public class FDebug extends javax.swing.JFrame
             }
         });
 
+        jButton6.setText("test date get");
+        jButton6.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButton6ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -101,7 +115,10 @@ public class FDebug extends javax.swing.JFrame
                                 .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(128, 128, 128)
-                        .addComponent(jButton5)))
+                        .addComponent(jButton5))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(95, 95, 95)
+                        .addComponent(jButton6)))
                 .addContainerGap(327, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -119,7 +136,9 @@ public class FDebug extends javax.swing.JFrame
                 .addComponent(jButton3)
                 .addGap(34, 34, 34)
                 .addComponent(jButton5)
-                .addContainerGap(240, Short.MAX_VALUE))
+                .addGap(28, 28, 28)
+                .addComponent(jButton6)
+                .addContainerGap(190, Short.MAX_VALUE))
         );
 
         pack();
@@ -127,23 +146,23 @@ public class FDebug extends javax.swing.JFrame
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1ActionPerformed
     {//GEN-HEADEREND:event_jButton1ActionPerformed
-        DebugEmployee.Attendance.TimeIn();
+        DebugEmployee.Attendance.TimeEmployee(CAttendance.TIME_IN);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton3ActionPerformed
     {//GEN-HEADEREND:event_jButton3ActionPerformed
-        JOptionPane.showMessageDialog(this, DebugEmployee.Attendance.GetAttendanceState().toString());
+        JOptionPane.showMessageDialog(this, DebugEmployee.Attendance.GetAttendanceState());
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton4ActionPerformed
     {//GEN-HEADEREND:event_jButton4ActionPerformed
-        DebugEmployee.Attendance.TimeOut();
+        DebugEmployee.Attendance.TimeEmployee(CAttendance.TIME_OUT);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton2ActionPerformed
     {//GEN-HEADEREND:event_jButton2ActionPerformed
-        CAttendanceData data = DebugEmployee.Attendance.GetAllAttendance().get(1);
-        JOptionPane.showMessageDialog(this, "Date: " + data.Date.toString() + "\nState: " + data.State.toString());
+        CAttendanceSegment[] data = DebugEmployee.Attendance.GetThisToday();
+        JOptionPane.showMessageDialog(this, "time in:\nDate: " + data[CAttendance.TIME_IN].Date.toString() + "\nState: " + data[CAttendance.TIME_OUT].State + "\n\ntime out:\nDate: " + data[CAttendance.TIME_IN].Date.toString() + "\nState: " + data[CAttendance.TIME_OUT].State);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton5ActionPerformed
@@ -151,6 +170,12 @@ public class FDebug extends javax.swing.JFrame
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         JOptionPane.showMessageDialog(this, "w: " + screenSize.getWidth() + "\nh: " + screenSize.getHeight());
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton6ActionPerformed
+    {//GEN-HEADEREND:event_jButton6ActionPerformed
+        Calendar cal = new GregorianCalendar();
+        JOptionPane.showMessageDialog(this, "m: " + cal.get(Calendar.MONTH) + "y: " + cal.get(Calendar.YEAR) + "d: " + cal.get(Calendar.DATE));
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     public static void main(String args[])
     {
@@ -200,6 +225,7 @@ public class FDebug extends javax.swing.JFrame
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JTextField tbIndex;
     // End of variables declaration//GEN-END:variables
 }

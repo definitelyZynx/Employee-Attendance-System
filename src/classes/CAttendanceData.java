@@ -1,16 +1,16 @@
 package classes;
 
-import java.util.Date;
-
 public class CAttendanceData
 {
-    CAttendanceData() {}
-    
-    CAttendanceData(CInfoAttendance.AttendanceState State_)
+    public CAttendanceData()
     {
-        this.State = State_;
+        
     }
     
-    public Date Date = new Date();
-    public CInfoAttendance.AttendanceState State = CInfoAttendance.AttendanceState.NONE;
+    public CAttendanceSegment[] GetByDate(int Month, int Date)
+    {
+        return this.Segments[Month][Date];
+    }
+    
+    public CAttendanceSegment[][][] Segments = new CAttendanceSegment[12][31][2];
 }

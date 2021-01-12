@@ -2,18 +2,16 @@ package ui;
 
 import classes.*;
 import instances.Database;
-import instances.Forms;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-import javax.swing.JOptionPane;
 
 public class FTimeMenu extends javax.swing.JFrame
 {
     private FLogInMenu LogInInstance = null;
-    private CEmployee Employee = null;
-    private CInfoAttendance.AttendanceState AttState = CInfoAttendance.AttendanceState.NONE;
+    private CEmployee  Employee      = null;
+    private int        AttState      = CAttendance.NONE;
     
     public FTimeMenu(FLogInMenu LogInInstance_, CEmployee Employee_)
     {
@@ -161,7 +159,18 @@ public class FTimeMenu extends javax.swing.JFrame
     private void formWindowOpened(java.awt.event.WindowEvent evt)//GEN-FIRST:event_formWindowOpened
     {//GEN-HEADEREND:event_formWindowOpened
         EmployeeName.setText(String.join(" ", Employee.Personal.GetNames()));
-        TimeInOutBtn.setText("TIME " + (this.AttState == CInfoAttendance.AttendanceState.TIME_IN ? "IN" : "OUT"));
+        
+        if (Employee.Attendance.GetAttendanceState() == CAttendance.FINISHED)
+        {
+            TimeInOutBtn.setText("COMPLETED!");
+            TimeInOutBtn.setEnabled(false);
+        }
+        else
+        {
+            TimeInOutBtn.setText("TIME " + (this.AttState == CAttendance.TIME_IN ? "IN" : "OUT"));
+        }
+        
+        
         AdminBtn.setVisible(Employee.Privilege.HasPriviledge(CPrivilege.ACCESS_ATTENDANCE_DATA | CPrivilege.ACCESS_EMPLOYMENT_INFO | CPrivilege.CHANGE_ATTENDANCE_DATA | CPrivilege.CHANGE_BASIC_INFO | CPrivilege.CHANGE_EMPLOYMENT_INFO));
     }//GEN-LAST:event_formWindowOpened
 
@@ -186,13 +195,8 @@ public class FTimeMenu extends javax.swing.JFrame
 
     private void TimeInOutBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_TimeInOutBtnActionPerformed
     {//GEN-HEADEREND:event_TimeInOutBtnActionPerformed
-        if (this.AttState == CInfoAttendance.AttendanceState.TIME_IN)
-            this.Employee.Attendance.TimeIn();
-        else if (this.AttState == CInfoAttendance.AttendanceState.TIME_OUT)
-            this.Employee.Attendance.TimeOut();
-            
+        this.Employee.Attendance.TimeEmployee(AttState);
         Database.Instance.SaveToFile();
-        
         CloseToLogin();
     }//GEN-LAST:event_TimeInOutBtnActionPerformed
 
