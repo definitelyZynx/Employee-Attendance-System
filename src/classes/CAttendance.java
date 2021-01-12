@@ -39,11 +39,7 @@ public class CAttendance
     
     public void TimeEmployee(int Method)
     {
-        CAttendanceSegment segment = new CAttendanceSegment();
-        segment.Date = new Date();
-        segment.State = true;
-        
-        this.GetThisToday()[Method] = segment;
+        this.GetThisToday()[Method] = new CAttendanceSegment(true);
     }
     
     public int GetAttendanceState()
