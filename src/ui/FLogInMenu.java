@@ -3,6 +3,7 @@ package ui;
 import classes.*;
 import instances.Database;
 import instances.Forms;
+import popups.FirstTimeSetup;
 import java.awt.Color;
 import java.awt.event.FocusEvent;
 import javax.swing.JOptionPane;
@@ -48,8 +49,7 @@ public class FLogInMenu extends javax.swing.JFrame
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         lblDebug = new javax.swing.JLabel();
         LblNotification = new javax.swing.JLabel();
@@ -59,17 +59,13 @@ public class FLogInMenu extends javax.swing.JFrame
         Background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
-        setAlwaysOnTop(true);
         setMaximumSize(new java.awt.Dimension(460, 630));
         setUndecorated(true);
-        addWindowListener(new java.awt.event.WindowAdapter()
-        {
-            public void windowClosing(java.awt.event.WindowEvent evt)
-            {
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
             }
-            public void windowOpened(java.awt.event.WindowEvent evt)
-            {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
         });
@@ -77,10 +73,8 @@ public class FLogInMenu extends javax.swing.JFrame
 
         lblDebug.setForeground(new java.awt.Color(255, 0, 0));
         lblDebug.setText("[ DEBUG ]");
-        lblDebug.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
+        lblDebug.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblDebugMouseClicked(evt);
             }
         });
@@ -101,10 +95,8 @@ public class FLogInMenu extends javax.swing.JFrame
         BtnLogin.setBorderPainted(false);
         BtnLogin.setContentAreaFilled(false);
         BtnLogin.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        BtnLogin.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        BtnLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnLoginActionPerformed(evt);
             }
         });
@@ -115,14 +107,11 @@ public class FLogInMenu extends javax.swing.JFrame
         IDTxtField.setText("ID Code");
         IDTxtField.setToolTipText("ID Code");
         IDTxtField.setBorder(null);
-        IDTxtField.addFocusListener(new java.awt.event.FocusAdapter()
-        {
-            public void focusGained(java.awt.event.FocusEvent evt)
-            {
+        IDTxtField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
                 IDTxtFieldFocusGained(evt);
             }
-            public void focusLost(java.awt.event.FocusEvent evt)
-            {
+            public void focusLost(java.awt.event.FocusEvent evt) {
                 IDTxtFieldFocusLost(evt);
             }
         });
@@ -132,14 +121,11 @@ public class FLogInMenu extends javax.swing.JFrame
         KeyTxtField.setForeground(new java.awt.Color(153, 153, 153));
         KeyTxtField.setText("Key Code");
         KeyTxtField.setBorder(null);
-        KeyTxtField.addFocusListener(new java.awt.event.FocusAdapter()
-        {
-            public void focusGained(java.awt.event.FocusEvent evt)
-            {
+        KeyTxtField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
                 KeyTxtFieldFocusGained(evt);
             }
-            public void focusLost(java.awt.event.FocusEvent evt)
-            {
+            public void focusLost(java.awt.event.FocusEvent evt) {
                 KeyTxtFieldFocusLost(evt);
             }
         });
@@ -217,9 +203,10 @@ public class FLogInMenu extends javax.swing.JFrame
         // TODO: maybe make this look better
         if (Database.Instance.CountEmployees() == 0)
         {
-            JOptionPane.showMessageDialog(this, "Empty database detected!\n\nDue to the circumstance that the database is empty the first login will be treated as a registration for an Admin user that can be used to login into the Admin Panel", "First time setup", JOptionPane.INFORMATION_MESSAGE);
+            FirstTimeSetup DisplayWarning = new FirstTimeSetup();
+            DisplayWarning.setLocationRelativeTo(this);
+            DisplayWarning.setVisible(true);
             BtnLogin.setText("Register");
-            LblNotification.setText("First time setup!");
         }
         
     }//GEN-LAST:event_formWindowOpened
