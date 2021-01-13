@@ -1,7 +1,6 @@
 package classes;
 
 import helper.Utils;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class CAttendance
@@ -67,7 +66,6 @@ public class CAttendance
         return YearlyAttendance;
     }
     
-    // TODO: use normal arrays instead of 
     private HashMap<Integer, CAttendanceData> YearlyAttendance = new HashMap<>()
     {
         

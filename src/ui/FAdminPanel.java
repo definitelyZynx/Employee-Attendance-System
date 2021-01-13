@@ -1,9 +1,13 @@
 package ui;
 
+import classes.CAttendance;
+import classes.CAttendanceData;
+import classes.CAttendanceSegment;
 import classes.CEmployee;
 import helper.Utils;
 import instances.Database;
 import instances.Forms;
+import java.util.Arrays;
 import java.util.Map;
 import javax.swing.table.DefaultTableModel;
 
@@ -61,14 +65,33 @@ public class FAdminPanel extends javax.swing.JFrame
     
     public void LoadToTable()
     {
-        DefaultTableModel TableModel = new DefaultTableModel();
-        Table.setModel(TableModel); // Clear the table
+        DefaultTableModel TableModel = (DefaultTableModel)Table.getModel();
+        TableModel.setRowCount(0);
         
         for (Map.Entry<String, CEmployee> EmployeeKVP : Database.Instance.GetAllEmployees().entrySet())
         {
             CEmployee CurrentEmployee = EmployeeKVP.getValue();
             
-            TableModel.addRow(new String[] { String.join(" ", CurrentEmployee.Personal.GetNames()) });
+            String AttDisplay[] = new String[32];
+            Arrays.fill(AttDisplay, "Ø");
+            
+            AttDisplay[0] = String.join(" ", CurrentEmployee.Personal.GetNames());
+            
+            CAttendanceData AttData = CurrentEmployee.Attendance.GetAllAttendance().get(this.DateFilterYear);
+            
+            if (AttData != null)
+            {
+                CAttendanceSegment AttMonth[][] = AttData.Segments[this.DateFilterMonth];
+                for (int Day = 0; Day < 31; Day++)
+                {
+                    if (AttMonth[Day][CAttendance.TIME_IN] != null && AttMonth[Day][CAttendance.TIME_OUT] == null)
+                        AttDisplay[Day + 1] = "?";
+                    else if (AttMonth[Day][CAttendance.TIME_IN] != null && AttMonth[Day][CAttendance.TIME_OUT] != null)
+                        AttDisplay[Day + 1] = "O";
+                }
+            }
+            
+            TableModel.addRow(AttDisplay);
         }
     }
     
