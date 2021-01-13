@@ -61,6 +61,7 @@ public class FAdminPanel extends javax.swing.JFrame
     public void UpdateDateFilter()
     {
         Date.setText(String.format("%s, %04d", Utils.MonthToText[this.DateFilterMonth - 1], this.DateFilterYear));
+        this.LoadToTable();
     }
     
     public void LoadToTable()
@@ -327,7 +328,6 @@ public class FAdminPanel extends javax.swing.JFrame
         this.UpdateDateFilter(now[1], now[2]);
         
         AdminName.setText(String.join(" ", SessionEmployee.Personal.GetNames()));
-        this.LoadToTable();
     }//GEN-LAST:event_formWindowOpened
 
     private void ExitButtonMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_ExitButtonMouseClicked
