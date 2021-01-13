@@ -2,18 +2,22 @@ package popups;
 
 public class AdminAccountCreated extends javax.swing.JFrame {
 
-    public AdminAccountCreated() {
+    private ui.FLogInMenu LogInInstance = null;
+    
+    public AdminAccountCreated(ui.FLogInMenu LogInInstance_) {
+        LogInInstance = LogInInstance_;
         initComponents();
     }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         jButton2 = new javax.swing.JButton();
         Background = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setAlwaysOnTop(true);
         setUndecorated(true);
         setPreferredSize(new java.awt.Dimension(448, 377));
@@ -25,8 +29,10 @@ public class AdminAccountCreated extends javax.swing.JFrame {
         jButton2.setBorderPainted(false);
         jButton2.setContentAreaFilled(false);
         jButton2.setFocusPainted(false);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButton2.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jButton2ActionPerformed(evt);
             }
         });
@@ -39,6 +45,7 @@ public class AdminAccountCreated extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        LogInInstance.FinalLogin();
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 

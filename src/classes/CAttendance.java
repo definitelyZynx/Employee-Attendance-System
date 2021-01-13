@@ -62,12 +62,10 @@ public class CAttendance
         return CAttendance.TIME_IN;
     }
     
-    public ArrayList<CAttendanceData> GetAllAttendance()
+    public HashMap<Integer, CAttendanceData> GetAllAttendance()
     {
-        return Attendance;
+        return YearlyAttendance;
     }
-    
-    private ArrayList<CAttendanceData> Attendance = new ArrayList<>();
     
     // TODO: use normal arrays instead of 
     private HashMap<Integer, CAttendanceData> YearlyAttendance = new HashMap<>()

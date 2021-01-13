@@ -48,6 +48,25 @@ public class FLogInMenu extends javax.swing.JFrame
         return !IDTxtField.getText().isEmpty() && !IDTxtField.getText().equals("ID Code") && !KeyTxtField.getText().isEmpty() && !KeyTxtField.getText().equals("Key Code");
     }
     
+    public void FinalLogin()
+    {
+        LblNotification.setText("");
+        
+        CEmployee Employee = Database.Instance.ChallengeAuthentication(IDTxtField.getText(), KeyTxtField.getText());
+        
+        if (Employee == null)
+        {
+            LblNotification.setText("Invalid Password!");
+            return;
+        }
+        
+        FTimeMenu TimeSessionWindow = new FTimeMenu(this, Employee);
+        TimeSessionWindow.setLocationRelativeTo(this);
+        TimeSessionWindow.setVisible(true);
+        
+        this.setEnabled(false);
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents()
@@ -189,28 +208,17 @@ public class FLogInMenu extends javax.swing.JFrame
         if (Database.Instance.CountEmployees() == 0)
         {
             Database.Instance.EmployeeRegister("First Name", "Last Name", 1, IDTxtField.getText(), KeyTxtField.getText(), 0, CPrivilege.ALL_PRIVILEGE);
-            AdminAccountCreated AccountCreated = new AdminAccountCreated();
+            AdminAccountCreated AccountCreated = new AdminAccountCreated(this);
             AccountCreated.setLocationRelativeTo(this);
             AccountCreated.setVisible(true);
+            
             BtnLogin.setText("Login");
             Database.Instance.SaveToFile();
-        }
-        
-        LblNotification.setText("");
-        
-        CEmployee Employee = Database.Instance.ChallengeAuthentication(IDTxtField.getText(), KeyTxtField.getText());
-        
-        if (Employee == null)
-        {
-            LblNotification.setText("Invalid Password!");
+            
             return;
         }
         
-        FTimeMenu TimeSessionWindow = new FTimeMenu(this, Employee);
-        TimeSessionWindow.setLocationRelativeTo(this);
-        TimeSessionWindow.setVisible(true);
-        
-        this.setEnabled(false);
+        this.FinalLogin();
     }//GEN-LAST:event_BtnLoginActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt)//GEN-FIRST:event_formWindowOpened

@@ -25,7 +25,9 @@ public class FSelectorMMYYYY extends javax.swing.JFrame
         btnSet = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Set Date");
         setAlwaysOnTop(true);
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter()
         {
             public void windowClosing(java.awt.event.WindowEvent evt)
