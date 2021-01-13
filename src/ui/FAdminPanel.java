@@ -58,8 +58,7 @@ public class FAdminPanel extends javax.swing.JFrame
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         AddBtn = new javax.swing.JButton();
         EditBtn = new javax.swing.JButton();
@@ -67,6 +66,7 @@ public class FAdminPanel extends javax.swing.JFrame
         AdminName = new javax.swing.JLabel();
         Date = new javax.swing.JLabel();
         ExitButton = new javax.swing.JButton();
+        SearchTxtfield = new javax.swing.JTextField();
         JScrollPane = new javax.swing.JScrollPane();
         Table = new javax.swing.JTable();
         Background = new javax.swing.JLabel();
@@ -78,14 +78,11 @@ public class FAdminPanel extends javax.swing.JFrame
         setResizable(false);
         setSize(new java.awt.Dimension(1280, 720));
         setType(java.awt.Window.Type.POPUP);
-        addWindowListener(new java.awt.event.WindowAdapter()
-        {
-            public void windowClosing(java.awt.event.WindowEvent evt)
-            {
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
             }
-            public void windowOpened(java.awt.event.WindowEvent evt)
-            {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
         });
@@ -114,15 +111,13 @@ public class FAdminPanel extends javax.swing.JFrame
         AdminName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         AdminName.setText("Firstname Lastname");
         getContentPane().add(AdminName);
-        AdminName.setBounds(5, 280, 200, 21);
+        AdminName.setBounds(5, 280, 200, 16);
 
         Date.setFont(new java.awt.Font("Gotham Black", 0, 14)); // NOI18N
         Date.setForeground(new java.awt.Color(255, 255, 255));
         Date.setText("MM, YYYY");
-        Date.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
+        Date.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
                 DateMouseClicked(evt);
             }
         });
@@ -134,15 +129,19 @@ public class FAdminPanel extends javax.swing.JFrame
         ExitButton.setBorderPainted(false);
         ExitButton.setContentAreaFilled(false);
         ExitButton.setFocusable(false);
-        ExitButton.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
+        ExitButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
                 ExitButtonMouseClicked(evt);
             }
         });
         getContentPane().add(ExitButton);
-        ExitButton.setBounds(1230, 18, 33, 40);
+        ExitButton.setBounds(1230, 18, 39, 40);
+
+        SearchTxtfield.setBackground(new java.awt.Color(18, 18, 18));
+        SearchTxtfield.setForeground(new java.awt.Color(255, 255, 255));
+        SearchTxtfield.setBorder(null);
+        getContentPane().add(SearchTxtfield);
+        SearchTxtfield.setBounds(300, 640, 210, 16);
 
         JScrollPane.setBackground(new java.awt.Color(40, 40, 40));
         JScrollPane.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
@@ -153,8 +152,7 @@ public class FAdminPanel extends javax.swing.JFrame
         Table.setBackground(new java.awt.Color(40, 40, 40));
         Table.setForeground(new java.awt.Color(255, 255, 255));
         Table.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][]
-            {
+            new Object [][] {
                 {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
@@ -185,28 +183,22 @@ public class FAdminPanel extends javax.swing.JFrame
                 {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null}
             },
-            new String []
-            {
+            new String [] {
                 "Employee", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"
             }
-        )
-        {
-            Class[] types = new Class []
-            {
+        ) {
+            Class[] types = new Class [] {
                 java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
-            boolean[] canEdit = new boolean []
-            {
+            boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false
             };
 
-            public Class getColumnClass(int columnIndex)
-            {
+            public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
 
-            public boolean isCellEditable(int rowIndex, int columnIndex)
-            {
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
@@ -216,8 +208,7 @@ public class FAdminPanel extends javax.swing.JFrame
         Table.setShowGrid(false);
         Table.getTableHeader().setReorderingAllowed(false);
         JScrollPane.setViewportView(Table);
-        if (Table.getColumnModel().getColumnCount() > 0)
-        {
+        if (Table.getColumnModel().getColumnCount() > 0) {
             Table.getColumnModel().getColumn(0).setResizable(false);
             Table.getColumnModel().getColumn(0).setPreferredWidth(700);
             Table.getColumnModel().getColumn(1).setResizable(false);
@@ -311,6 +302,7 @@ public class FAdminPanel extends javax.swing.JFrame
     private javax.swing.JButton EditBtn;
     private javax.swing.JButton ExitButton;
     private javax.swing.JScrollPane JScrollPane;
+    private javax.swing.JTextField SearchTxtfield;
     private javax.swing.JTable Table;
     // End of variables declaration//GEN-END:variables
 }
