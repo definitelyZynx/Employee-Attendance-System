@@ -44,14 +44,14 @@ public class FAdminPanel extends javax.swing.JFrame
         this.dispose();
     }
     
-    private void UpdateDateFilter(int Month, int Year)
+    public void UpdateDateFilter(int Month, int Year)
     {
         this.DateFilterMonth = Month;
         this.DateFilterYear  = Year;
         this.UpdateDateFilter();
     }
     
-    private void UpdateDateFilter()
+    public void UpdateDateFilter()
     {
         Date.setText(String.format("%s, %04d", Utils.MonthToText[this.DateFilterMonth - 1], this.DateFilterYear));
     }
@@ -119,8 +119,15 @@ public class FAdminPanel extends javax.swing.JFrame
         Date.setFont(new java.awt.Font("Gotham Black", 0, 14)); // NOI18N
         Date.setForeground(new java.awt.Color(255, 255, 255));
         Date.setText("MM, YYYY");
+        Date.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
+                DateMouseClicked(evt);
+            }
+        });
         getContentPane().add(Date);
-        Date.setBounds(1080, 25, 100, 20);
+        Date.setBounds(1080, 25, 120, 20);
 
         ExitButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/ExitButton.png"))); // NOI18N
         ExitButton.setAlignmentY(0.0F);
@@ -274,7 +281,6 @@ public class FAdminPanel extends javax.swing.JFrame
         this.UpdateDateFilter(now[1], now[2]);
         
         AdminName.setText(String.join(" ", SessionEmployee.Personal.GetNames()));
-        
     }//GEN-LAST:event_formWindowOpened
 
     private void ExitButtonMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_ExitButtonMouseClicked
@@ -286,6 +292,15 @@ public class FAdminPanel extends javax.swing.JFrame
     {//GEN-HEADEREND:event_formWindowClosing
         this.EndSession();
     }//GEN-LAST:event_formWindowClosing
+
+    private void DateMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_DateMouseClicked
+    {//GEN-HEADEREND:event_DateMouseClicked
+        FSelectorMMYYYY DateSelector = new FSelectorMMYYYY(this);
+        DateSelector.setLocationRelativeTo(this);
+        DateSelector.setVisible(true);
+        
+        this.setEnabled(false);
+    }//GEN-LAST:event_DateMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddBtn;
