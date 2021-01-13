@@ -1,6 +1,7 @@
 package ui;
 
 import classes.*;
+import helper.Utils;
 import instances.Database;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -25,7 +26,7 @@ public class FTimeMenu extends javax.swing.JFrame
             @Override
             public void run()
             {
-                final String[] _dayToText = new String[] { "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" };
+                
                 
                 while(true)
                 {
@@ -33,7 +34,7 @@ public class FTimeMenu extends javax.swing.JFrame
                     
                     Date.setText(DateTimeFormatter.ofPattern("dd / MM / yyyy").format(LocalDateTime.now()));
                     Clock.setText(String.format("%02d:%02d  %s", cal.get(Calendar.HOUR), cal.get(Calendar.MINUTE), cal.get(Calendar.AM_PM) == 1 ? "PM" : "AM"));
-                    Day.setText(_dayToText[cal.get(Calendar.DAY_OF_WEEK) - 1]);
+                    Day.setText(Utils.DayToText[cal.get(Calendar.DAY_OF_WEEK) - 1]);
                     
                     try
                     {

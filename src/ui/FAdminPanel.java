@@ -1,6 +1,7 @@
 package ui;
 
 import classes.CEmployee;
+import helper.Utils;
 import instances.Forms;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -104,7 +105,7 @@ public class FAdminPanel extends javax.swing.JFrame
 
         Date.setFont(new java.awt.Font("Gotham Black", 0, 14)); // NOI18N
         Date.setForeground(new java.awt.Color(255, 255, 255));
-        Date.setText("MM DD, YYYY");
+        Date.setText("MM, YYYY");
         getContentPane().add(Date);
         Date.setBounds(1080, 25, 100, 20);
 
@@ -254,8 +255,7 @@ public class FAdminPanel extends javax.swing.JFrame
     private void formWindowOpened(java.awt.event.WindowEvent evt)//GEN-FIRST:event_formWindowOpened
     {//GEN-HEADEREND:event_formWindowOpened
         this.setSize(1296, 759);
-        Dimension DisplaySize = Toolkit.getDefaultToolkit().getScreenSize();
-        this.setLocation((int)(DisplaySize.getWidth() / 2 - this.getWidth() / 2), (int)(DisplaySize.getHeight() / 2 - this.getHeight() / 2));
+        Utils.CenterForm(this);
         
         AdminName.setText(String.join(" ", SessionEmployee.Personal.GetNames()));
         
