@@ -4,6 +4,7 @@ import classes.*;
 import instances.Database;
 import instances.Forms;
 import popups.FirstTimeSetup;
+import popups.AdminAccountCreated;
 import java.awt.Color;
 import java.awt.event.FocusEvent;
 import javax.swing.JOptionPane;
@@ -188,7 +189,9 @@ public class FLogInMenu extends javax.swing.JFrame
         if (Database.Instance.CountEmployees() == 0)
         {
             Database.Instance.EmployeeRegister("First Name", "Last Name", 1, IDTxtField.getText(), KeyTxtField.getText(), 0, CPrivilege.ALL_PRIVILEGE);
-            JOptionPane.showMessageDialog(this, "This account is now registered as an admin!\n\nPlease setup your profile in the admin panel.", "First time setup", JOptionPane.INFORMATION_MESSAGE);
+            AdminAccountCreated AccountCreated = new AdminAccountCreated();
+            AccountCreated.setLocationRelativeTo(this);
+            AccountCreated.setVisible(true);
             BtnLogin.setText("Login");
             Database.Instance.SaveToFile();
         }
