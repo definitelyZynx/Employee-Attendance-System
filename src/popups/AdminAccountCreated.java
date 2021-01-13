@@ -1,8 +1,8 @@
 package popups;
 
-public class FirstTimeSetup extends javax.swing.JFrame {
+public class AdminAccountCreated extends javax.swing.JFrame {
 
-    public FirstTimeSetup() {
+    public AdminAccountCreated() {
         initComponents();
     }
 
@@ -32,7 +32,7 @@ public class FirstTimeSetup extends javax.swing.JFrame {
         });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-40, 310, -1, 80));
 
-        Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/FirstTimeSetup.png"))); // NOI18N
+        Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/AdminAccountCreated.png"))); // NOI18N
         getContentPane().add(Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
