@@ -10,7 +10,8 @@ import javax.swing.JFrame;
 public class Utils
 {
     
-    public static final String[] DayToText = new String[] { "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" };
+    public static final String[] DayToText   = new String[] { "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" };
+    public static final String[] MonthToText = new String[] { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" };
     
     public static final Random RngInstance = new Random();
     

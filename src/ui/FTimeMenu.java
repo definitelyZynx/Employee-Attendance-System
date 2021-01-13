@@ -26,8 +26,6 @@ public class FTimeMenu extends javax.swing.JFrame
             @Override
             public void run()
             {
-                
-                
                 while(true)
                 {
                     Calendar cal = new GregorianCalendar();

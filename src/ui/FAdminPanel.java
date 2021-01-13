@@ -3,12 +3,13 @@ package ui;
 import classes.CEmployee;
 import helper.Utils;
 import instances.Forms;
-import java.awt.Dimension;
-import java.awt.Toolkit;
 
 public class FAdminPanel extends javax.swing.JFrame
 {
 
+    public int DateFilterMonth = 0;
+    public int DateFilterYear  = 0;
+    
     public enum SessionRequestResult
     {
         SUCCESS,
@@ -41,6 +42,18 @@ public class FAdminPanel extends javax.swing.JFrame
     {
         Forms.Main.DisplayLogin();
         this.dispose();
+    }
+    
+    private void UpdateDateFilter(int Month, int Year)
+    {
+        this.DateFilterMonth = Month;
+        this.DateFilterYear  = Year;
+        this.UpdateDateFilter();
+    }
+    
+    private void UpdateDateFilter()
+    {
+        Date.setText(String.format("%s, %04d", Utils.MonthToText[this.DateFilterMonth - 1], this.DateFilterYear));
     }
     
     @SuppressWarnings("unchecked")
@@ -256,6 +269,9 @@ public class FAdminPanel extends javax.swing.JFrame
     {//GEN-HEADEREND:event_formWindowOpened
         this.setSize(1296, 759);
         Utils.CenterForm(this);
+        
+        int now[] = Utils.GetDateDMY();
+        this.UpdateDateFilter(now[1], now[2]);
         
         AdminName.setText(String.join(" ", SessionEmployee.Personal.GetNames()));
         
