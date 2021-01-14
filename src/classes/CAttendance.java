@@ -32,7 +32,7 @@ public class CAttendance
     {
         int now[] = Utils.GetDateDMY();
         CheckThisYear();
-        return this.YearlyAttendance.get(now[2]).GetByDate(now[1], now[0]);
+        return this.YearlyAttendance.get(now[2]).GetByDate(now[1] - 1, now[0] - 1);
     }
     
     public void TimeEmployee(int Method)

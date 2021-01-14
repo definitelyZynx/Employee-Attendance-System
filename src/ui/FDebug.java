@@ -5,6 +5,7 @@ import classes.CAttendanceData;
 import classes.CAttendanceSegment;
 import classes.CEmployee;
 import classes.CPrivilege;
+import helper.Utils;
 import instances.Database;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -173,8 +174,8 @@ public class FDebug extends javax.swing.JFrame
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton6ActionPerformed
     {//GEN-HEADEREND:event_jButton6ActionPerformed
-        Calendar cal = new GregorianCalendar();
-        JOptionPane.showMessageDialog(this, "m: " + cal.get(Calendar.MONTH) + "y: " + cal.get(Calendar.YEAR) + "d: " + cal.get(Calendar.DATE));
+        int now[] = Utils.GetDateDMY();
+        JOptionPane.showMessageDialog(this, "m: " + now[1] + "y: " + now[2] + "d: " + now[0]);
     }//GEN-LAST:event_jButton6ActionPerformed
 
     public static void main(String args[])
