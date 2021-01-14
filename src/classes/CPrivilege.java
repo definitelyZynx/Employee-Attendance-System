@@ -38,5 +38,10 @@ public class CPrivilege
         return (this.Flag & PriviledgeFlag) > 0;
     }
     
+    public int GetFlag()
+    {
+        return this.Flag;
+    }
+    
     private int Flag = CPrivilege.NONE;
 }

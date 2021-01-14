@@ -2,6 +2,7 @@ package ui;
 
 import classes.CEmployee;
 import classes.CPrivilege;
+import classes.CSector;
 import instances.Database;
 
 public class FEmployeeEditor extends javax.swing.JFrame
@@ -33,8 +34,8 @@ public class FEmployeeEditor extends javax.swing.JFrame
         FirstnameTxt = new javax.swing.JTextField();
         LastnameTxt = new javax.swing.JTextField();
         AgeTxt = new javax.swing.JTextField();
-        IDCodeTxt = new javax.swing.JTextField();
         KeycodeTxt = new javax.swing.JTextField();
+        IDCodeTxt = new javax.swing.JTextField();
         TimeInOut = new javax.swing.JCheckBox();
         BasicInfo = new javax.swing.JCheckBox();
         EmploymentInfo = new javax.swing.JCheckBox();
@@ -82,15 +83,15 @@ public class FEmployeeEditor extends javax.swing.JFrame
         AgeTxt.setBorder(null);
         getContentPane().add(AgeTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(384, 250, 30, 20));
 
-        IDCodeTxt.setBackground(new java.awt.Color(40, 40, 40));
-        IDCodeTxt.setForeground(new java.awt.Color(255, 255, 255));
-        IDCodeTxt.setBorder(null);
-        getContentPane().add(IDCodeTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 310, 130, 20));
-
         KeycodeTxt.setBackground(new java.awt.Color(40, 40, 40));
         KeycodeTxt.setForeground(new java.awt.Color(255, 255, 255));
         KeycodeTxt.setBorder(null);
-        getContentPane().add(KeycodeTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 310, 130, 20));
+        getContentPane().add(KeycodeTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 310, 130, 20));
+
+        IDCodeTxt.setBackground(new java.awt.Color(40, 40, 40));
+        IDCodeTxt.setForeground(new java.awt.Color(255, 255, 255));
+        IDCodeTxt.setBorder(null);
+        getContentPane().add(IDCodeTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 310, 130, 20));
 
         TimeInOut.setBackground(new java.awt.Color(40, 40, 40));
         TimeInOut.setFont(new java.awt.Font("Gotham Light", 0, 12)); // NOI18N
@@ -176,8 +177,14 @@ public class FEmployeeEditor extends javax.swing.JFrame
             
             AgeTxt.setText(Employee.Personal.GetAge() + "");
             
-            KeycodeTxt.setText(Employee.Employment.GetIDCode(Employee));
-            IDCodeTxt.setText(Employee.Employment.GetPassword(Employee));
+            IDCodeTxt.setText(Employee.Employment.GetIDCode(Employee));
+            KeycodeTxt.setText(Employee.Employment.GetPassword(Employee));
+            
+            TimeInOut.setSelected(Employee.Privilege.HasPriviledge(CPrivilege.TIME_IN | CPrivilege.TIME_OUT));
+            BasicInfo.setSelected(Employee.Privilege.HasPriviledge(CPrivilege.ACCESS_BASIC_INFO | CPrivilege.CHANGE_BASIC_INFO));
+            EmploymentInfo.setSelected(Employee.Privilege.HasPriviledge(CPrivilege.ACCESS_EMPLOYMENT_INFO | CPrivilege.CHANGE_EMPLOYMENT_INFO));
+            AttendanceData.setSelected(Employee.Privilege.HasPriviledge(CPrivilege.ACCESS_ATTENDANCE_DATA | CPrivilege.CHANGE_ATTENDANCE_DATA));
+            AllAccess.setSelected(Employee.Privilege.GetFlag() == CPrivilege.ALL_PRIVILEGE);
         }
     }//GEN-LAST:event_formWindowOpened
 
@@ -193,30 +200,37 @@ public class FEmployeeEditor extends javax.swing.JFrame
 
     private void ConfirmButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_ConfirmButtonActionPerformed
     {//GEN-HEADEREND:event_ConfirmButtonActionPerformed
+        int Privilege = 0;
+            
+        if (TimeInOut.isSelected())
+            Privilege |= CPrivilege.TIME_IN | CPrivilege.TIME_OUT;
+            
+        if (BasicInfo.isSelected())
+            Privilege |= CPrivilege.ACCESS_BASIC_INFO | CPrivilege.CHANGE_BASIC_INFO;
+            
+        if (EmploymentInfo.isSelected())
+            Privilege |= CPrivilege.ACCESS_EMPLOYMENT_INFO | CPrivilege.CHANGE_EMPLOYMENT_INFO;
+            
+        if (AttendanceData.isSelected())
+            Privilege |= CPrivilege.ACCESS_ATTENDANCE_DATA | CPrivilege.CHANGE_ATTENDANCE_DATA;
+            
+        if (AllAccess.isSelected())
+            Privilege = CPrivilege.ALL_PRIVILEGE;
+        
         if (this.Employee == null)
         {
-            int Privilege = 0;
-            
-            if (TimeInOut.isSelected())
-                Privilege |= CPrivilege.TIME_IN | CPrivilege.TIME_OUT;
-            
-            if (BasicInfo.isSelected())
-                Privilege |= CPrivilege.ACCESS_BASIC_INFO | CPrivilege.CHANGE_BASIC_INFO;
-            
-            if (EmploymentInfo.isSelected())
-                Privilege |= CPrivilege.ACCESS_EMPLOYMENT_INFO | CPrivilege.CHANGE_EMPLOYMENT_INFO;
-            
-            if (AttendanceData.isSelected())
-                Privilege |= CPrivilege.ACCESS_ATTENDANCE_DATA | CPrivilege.CHANGE_ATTENDANCE_DATA;
-            
-            if (AllAccess.isSelected())
-                Privilege = CPrivilege.ALL_PRIVILEGE;
-            
-            Database.Instance.EmployeeRegister(FirstnameTxt.getText(), LastnameTxt.getText(), Integer.parseInt(AgeTxt.getText()), KeycodeTxt.getText(), IDCodeTxt.getText(), 0, Privilege);
-            Database.Instance.SaveToFile();
-            this.PanelInstance.LoadToTable();
-            this.CloseEditor();
+            Database.Instance.EmployeeRegister(FirstnameTxt.getText(), LastnameTxt.getText(), Integer.parseInt(AgeTxt.getText()), IDCodeTxt.getText(), KeycodeTxt.getText(), 0, Privilege);
         }
+        else
+        {
+            Employee.Personal.ModifyValues(Employee, FirstnameTxt.getText(), LastnameTxt.getText(), Integer.parseInt(AgeTxt.getText()));
+            Employee.Employment.ModifyValues(Employee, IDCodeTxt.getText(), KeycodeTxt.getText(), new CSector(0));
+            Employee.Privilege = new CPrivilege(Privilege);
+        }
+        
+        Database.Instance.SaveToFile();
+        this.PanelInstance.LoadToTable();
+        this.CloseEditor();
     }//GEN-LAST:event_ConfirmButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
