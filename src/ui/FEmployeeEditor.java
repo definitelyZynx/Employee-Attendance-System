@@ -1,6 +1,8 @@
 package ui;
 
 import classes.CEmployee;
+import classes.CPrivilege;
+import instances.Database;
 
 public class FEmployeeEditor extends javax.swing.JFrame
 {
@@ -131,6 +133,13 @@ public class FEmployeeEditor extends javax.swing.JFrame
         ConfirmButton.setBorderPainted(false);
         ConfirmButton.setContentAreaFilled(false);
         ConfirmButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        ConfirmButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                ConfirmButtonActionPerformed(evt);
+            }
+        });
         getContentPane().add(ConfirmButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 580, 100, -1));
 
         CancelButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/SmallCancelButton.png"))); // NOI18N
@@ -157,6 +166,19 @@ public class FEmployeeEditor extends javax.swing.JFrame
         String Mode = this.Employee == null ? "Add" : "Edit";
         this.setTitle(Mode + " Employee");
         ConfirmButton.setText(Mode);
+        
+        // Load data to forms
+        if (this.Employee != null)
+        {
+            String Name[] = Employee.Personal.GetNames();
+            FirstnameTxt.setText(Name[0]);
+            LastnameTxt.setText(Name[1]);
+            
+            AgeTxt.setText(Employee.Personal.GetAge() + "");
+            
+            KeycodeTxt.setText(Employee.Employment.GetIDCode(Employee));
+            IDCodeTxt.setText(Employee.Employment.GetPassword(Employee));
+        }
     }//GEN-LAST:event_formWindowOpened
 
     private void formWindowClosing(java.awt.event.WindowEvent evt)//GEN-FIRST:event_formWindowClosing
@@ -168,6 +190,34 @@ public class FEmployeeEditor extends javax.swing.JFrame
     {//GEN-HEADEREND:event_CancelButtonActionPerformed
         this.CloseEditor();
     }//GEN-LAST:event_CancelButtonActionPerformed
+
+    private void ConfirmButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_ConfirmButtonActionPerformed
+    {//GEN-HEADEREND:event_ConfirmButtonActionPerformed
+        if (this.Employee == null)
+        {
+            int Privilege = 0;
+            
+            if (TimeInOut.isSelected())
+                Privilege |= CPrivilege.TIME_IN | CPrivilege.TIME_OUT;
+            
+            if (BasicInfo.isSelected())
+                Privilege |= CPrivilege.ACCESS_BASIC_INFO | CPrivilege.CHANGE_BASIC_INFO;
+            
+            if (EmploymentInfo.isSelected())
+                Privilege |= CPrivilege.ACCESS_EMPLOYMENT_INFO | CPrivilege.CHANGE_EMPLOYMENT_INFO;
+            
+            if (AttendanceData.isSelected())
+                Privilege |= CPrivilege.ACCESS_ATTENDANCE_DATA | CPrivilege.CHANGE_ATTENDANCE_DATA;
+            
+            if (AllAccess.isSelected())
+                Privilege = CPrivilege.ALL_PRIVILEGE;
+            
+            Database.Instance.EmployeeRegister(FirstnameTxt.getText(), LastnameTxt.getText(), Integer.parseInt(AgeTxt.getText()), KeycodeTxt.getText(), IDCodeTxt.getText(), 0, Privilege);
+            Database.Instance.SaveToFile();
+            this.PanelInstance.LoadToTable();
+            this.CloseEditor();
+        }
+    }//GEN-LAST:event_ConfirmButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField AgeTxt;
