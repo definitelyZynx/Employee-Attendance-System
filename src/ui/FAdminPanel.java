@@ -69,12 +69,14 @@ public class FAdminPanel extends javax.swing.JFrame
         DefaultTableModel TableModel = (DefaultTableModel)Table.getModel();
         TableModel.setRowCount(0);
         
+        int now[] = Utils.GetDateDMY();
+        
         for (Map.Entry<String, CEmployee> EmployeeKVP : Database.Instance.GetAllEmployees().entrySet())
         {
             CEmployee CurrentEmployee = EmployeeKVP.getValue();
             
             String AttDisplay[] = new String[32];
-            Arrays.fill(AttDisplay, "Ø");
+            //Arrays.fill(AttDisplay, "Ø");
             
             AttDisplay[0] = String.join(" ", CurrentEmployee.Personal.GetNames());
             
@@ -83,12 +85,17 @@ public class FAdminPanel extends javax.swing.JFrame
             if (AttData != null)
             {
                 CAttendanceSegment AttMonth[][] = AttData.Segments[this.DateFilterMonth];
-                for (int Day = 0; Day < 31; Day++)
+                for (int Day = 1; Day < 31; Day++)
                 {
+                    if (this.DateFilterYear > now[2] || this.DateFilterMonth > now[1] || Day > now[0])
+                        continue;
+                    
                     if (AttMonth[Day][CAttendance.TIME_IN] != null && AttMonth[Day][CAttendance.TIME_OUT] == null)
-                        AttDisplay[Day + 1] = "?";
+                        AttDisplay[Day] = "?";
+                    else if (AttMonth[Day][CAttendance.TIME_IN] == null && AttMonth[Day][CAttendance.TIME_OUT] == null)
+                        AttDisplay[Day] = "Ø";
                     else if (AttMonth[Day][CAttendance.TIME_IN] != null && AttMonth[Day][CAttendance.TIME_OUT] != null)
-                        AttDisplay[Day + 1] = "O";
+                        AttDisplay[Day] = "O";
                 }
             }
             
