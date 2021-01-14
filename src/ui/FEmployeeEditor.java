@@ -200,6 +200,9 @@ public class FEmployeeEditor extends javax.swing.JFrame
 
     private void ConfirmButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_ConfirmButtonActionPerformed
     {//GEN-HEADEREND:event_ConfirmButtonActionPerformed
+        
+        // TODO: add checks
+        
         int Privilege = 0;
             
         if (TimeInOut.isSelected())
