@@ -2,12 +2,12 @@ package ui;
 
 import helper.Utils;
 
-public class FSelectorMMYYYY extends javax.swing.JFrame
+public class FSelectorMY extends javax.swing.JFrame
 {
     
     private FAdminPanel PanelInstance = null;
     
-    public FSelectorMMYYYY(FAdminPanel PanelInstance_)
+    public FSelectorMY(FAdminPanel PanelInstance_)
     {
         this.PanelInstance = PanelInstance_;
         initComponents();

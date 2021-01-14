@@ -159,6 +159,8 @@ public class FTimeMenu extends javax.swing.JFrame
     {//GEN-HEADEREND:event_formWindowOpened
         EmployeeName.setText(String.join(" ", Employee.Personal.GetNames()));
         
+        TimeInOutBtn.setEnabled(Employee.Privilege.HasPriviledge(CPrivilege.TIME_IN | CPrivilege.TIME_OUT));
+        
         if (Employee.Attendance.GetAttendanceState() == CAttendance.FINISHED)
         {
             TimeInOutBtn.setText("COMPLETED!");

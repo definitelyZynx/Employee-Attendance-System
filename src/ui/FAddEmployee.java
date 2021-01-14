@@ -25,7 +25,8 @@ public class FAddEmployee extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
@@ -80,30 +81,35 @@ public class FAddEmployee extends javax.swing.JFrame {
         TimeInOut.setFont(new java.awt.Font("Gotham Light", 0, 12)); // NOI18N
         TimeInOut.setForeground(new java.awt.Color(255, 255, 255));
         TimeInOut.setText("Time In / Time Out");
+        TimeInOut.setContentAreaFilled(false);
         getContentPane().add(TimeInOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 400, 140, 30));
 
         BasicInfo.setBackground(new java.awt.Color(40, 40, 40));
         BasicInfo.setFont(new java.awt.Font("Gotham Light", 0, 12)); // NOI18N
         BasicInfo.setForeground(new java.awt.Color(255, 255, 255));
         BasicInfo.setText("Basic Info");
+        BasicInfo.setContentAreaFilled(false);
         getContentPane().add(BasicInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 400, 140, 30));
 
         EmploymentInfo.setBackground(new java.awt.Color(40, 40, 40));
         EmploymentInfo.setFont(new java.awt.Font("Gotham Light", 0, 12)); // NOI18N
         EmploymentInfo.setForeground(new java.awt.Color(255, 255, 255));
         EmploymentInfo.setText("Employment Info");
+        EmploymentInfo.setContentAreaFilled(false);
         getContentPane().add(EmploymentInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 460, 140, 30));
 
         AttendanceData.setBackground(new java.awt.Color(40, 40, 40));
         AttendanceData.setFont(new java.awt.Font("Gotham Light", 0, 12)); // NOI18N
         AttendanceData.setForeground(new java.awt.Color(255, 255, 255));
         AttendanceData.setText("Attendance Data");
+        AttendanceData.setContentAreaFilled(false);
         getContentPane().add(AttendanceData, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 460, 140, 30));
 
         AllAccess.setBackground(new java.awt.Color(40, 40, 40));
         AllAccess.setFont(new java.awt.Font("Gotham Light", 0, 12)); // NOI18N
         AllAccess.setForeground(new java.awt.Color(255, 255, 255));
         AllAccess.setText("All Access");
+        AllAccess.setContentAreaFilled(false);
         getContentPane().add(AllAccess, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 510, 140, 30));
 
         AddButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/SmallAddButton.png"))); // NOI18N

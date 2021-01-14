@@ -7,6 +7,7 @@ import classes.CEmployee;
 import helper.Utils;
 import instances.Database;
 import instances.Forms;
+import java.awt.Color;
 import java.util.Arrays;
 import java.util.Map;
 import javax.swing.table.DefaultTableModel;
@@ -343,6 +344,9 @@ public class FAdminPanel extends javax.swing.JFrame
         Table.getColumnModel().getColumn(1).setMinWidth(160);
         Table.getColumnModel().getColumn(1).setMaxWidth(9999);
         Table.getColumnModel().getColumn(1).setWidth(160);
+        
+        Table.setBackground(new java.awt.Color(40, 40, 40));
+        Table.setForeground(new java.awt.Color(255, 255, 255));
     }//GEN-LAST:event_formWindowOpened
 
     private void ExitButtonMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_ExitButtonMouseClicked
@@ -357,7 +361,7 @@ public class FAdminPanel extends javax.swing.JFrame
 
     private void DateMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_DateMouseClicked
     {//GEN-HEADEREND:event_DateMouseClicked
-        FSelectorMMYYYY DateSelector = new FSelectorMMYYYY(this);
+        FSelectorMY DateSelector = new FSelectorMY(this);
         DateSelector.setLocationRelativeTo(this);
         DateSelector.setVisible(true);
         
