@@ -10,6 +10,7 @@ import instances.Forms;
 import java.awt.Color;
 import java.util.Arrays;
 import java.util.Map;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class FAdminPanel extends javax.swing.JFrame
@@ -156,6 +157,13 @@ public class FAdminPanel extends javax.swing.JFrame
         EditBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/EditButton.png"))); // NOI18N
         EditBtn.setBorderPainted(false);
         EditBtn.setContentAreaFilled(false);
+        EditBtn.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                EditBtnActionPerformed(evt);
+            }
+        });
         getContentPane().add(EditBtn);
         EditBtn.setBounds(960, 630, 130, 40);
 
@@ -383,6 +391,26 @@ public class FAdminPanel extends javax.swing.JFrame
         
         this.setEnabled(false);
     }//GEN-LAST:event_AddBtnActionPerformed
+
+    private void EditBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_EditBtnActionPerformed
+    {//GEN-HEADEREND:event_EditBtnActionPerformed
+        int SelectedIdx = Table.getSelectedRow();
+        
+        if (SelectedIdx == -1)
+        {
+            JOptionPane.showMessageDialog(this, "Please select an employee to edit!");
+            return;
+        }
+        
+        String Identifier = Table.getValueAt(SelectedIdx, 0).toString();
+        CEmployee SelectedEmployee = Database.Instance.GetEmployee(Identifier);
+        
+        FEmployeeEditor Editor = new FEmployeeEditor(this, SelectedEmployee);
+        Editor.setLocationRelativeTo(this);
+        Editor.setVisible(true);
+        
+        this.setEnabled(false);
+    }//GEN-LAST:event_EditBtnActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddBtn;

@@ -125,9 +125,12 @@ public class FEmployeeEditor extends javax.swing.JFrame
         AllAccess.setContentAreaFilled(false);
         getContentPane().add(AllAccess, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 510, 140, 30));
 
+        ConfirmButton.setForeground(new java.awt.Color(0, 0, 0));
         ConfirmButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/SmallAddButton.png"))); // NOI18N
+        ConfirmButton.setText("ADD");
         ConfirmButton.setBorderPainted(false);
         ConfirmButton.setContentAreaFilled(false);
+        ConfirmButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         getContentPane().add(ConfirmButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 580, 100, -1));
 
         CancelButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/SmallCancelButton.png"))); // NOI18N

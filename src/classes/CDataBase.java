@@ -93,6 +93,11 @@ public class CDataBase
         return this.Employees;
     }
     
+    public CEmployee GetEmployee(String Identifier)
+    {
+        return this.Employees.get(Identifier);
+    }
+    
     private HashMap<String, CEmployee> Employees = new HashMap<>();
     private final transient Gson       gson      = new Gson();
 }
