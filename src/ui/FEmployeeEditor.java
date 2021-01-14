@@ -157,7 +157,7 @@ public class FEmployeeEditor extends javax.swing.JFrame
 
     private void formWindowOpened(java.awt.event.WindowEvent evt)//GEN-FIRST:event_formWindowOpened
     {//GEN-HEADEREND:event_formWindowOpened
-        String Mode = this.Employee == null ? "Add" : "Edit";
+        String Mode = this.Employee == null ? "ADD" : "EDIT";
         this.setTitle(Mode + " Employee");
         ConfirmButton.setText(Mode);
         
