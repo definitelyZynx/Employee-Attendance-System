@@ -26,8 +26,7 @@ public class FEmployeeEditor extends javax.swing.JFrame
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
@@ -54,14 +53,11 @@ public class FEmployeeEditor extends javax.swing.JFrame
         setMinimumSize(new java.awt.Dimension(458, 629));
         setResizable(false);
         setSize(new java.awt.Dimension(458, 629));
-        addWindowListener(new java.awt.event.WindowAdapter()
-        {
-            public void windowClosing(java.awt.event.WindowEvent evt)
-            {
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
             }
-            public void windowOpened(java.awt.event.WindowEvent evt)
-            {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
         });
@@ -128,16 +124,15 @@ public class FEmployeeEditor extends javax.swing.JFrame
         AllAccess.setContentAreaFilled(false);
         getContentPane().add(AllAccess, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 510, 140, 30));
 
+        ConfirmButton.setFont(new java.awt.Font("Gotham Black", 0, 10)); // NOI18N
         ConfirmButton.setForeground(new java.awt.Color(0, 0, 0));
         ConfirmButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/SmallAddButton.png"))); // NOI18N
         ConfirmButton.setText("ADD");
         ConfirmButton.setBorderPainted(false);
         ConfirmButton.setContentAreaFilled(false);
         ConfirmButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        ConfirmButton.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        ConfirmButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ConfirmButtonActionPerformed(evt);
             }
         });
@@ -146,10 +141,8 @@ public class FEmployeeEditor extends javax.swing.JFrame
         CancelButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/SmallCancelButton.png"))); // NOI18N
         CancelButton.setBorderPainted(false);
         CancelButton.setContentAreaFilled(false);
-        CancelButton.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        CancelButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CancelButtonActionPerformed(evt);
             }
         });
