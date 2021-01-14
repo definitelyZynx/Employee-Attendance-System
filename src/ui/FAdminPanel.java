@@ -143,6 +143,13 @@ public class FAdminPanel extends javax.swing.JFrame
         AddBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/AddButton.png"))); // NOI18N
         AddBtn.setBorderPainted(false);
         AddBtn.setContentAreaFilled(false);
+        AddBtn.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                AddBtnActionPerformed(evt);
+            }
+        });
         getContentPane().add(AddBtn);
         AddBtn.setBounds(820, 630, 130, 40);
 
@@ -367,6 +374,15 @@ public class FAdminPanel extends javax.swing.JFrame
         
         this.setEnabled(false);
     }//GEN-LAST:event_DateMouseClicked
+
+    private void AddBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_AddBtnActionPerformed
+    {//GEN-HEADEREND:event_AddBtnActionPerformed
+        FEmployeeEditor Editor = new FEmployeeEditor(this, null);
+        Editor.setLocationRelativeTo(this);
+        Editor.setVisible(true);
+        
+        this.setEnabled(false);
+    }//GEN-LAST:event_AddBtnActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddBtn;
