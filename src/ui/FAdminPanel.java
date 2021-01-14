@@ -170,6 +170,13 @@ public class FAdminPanel extends javax.swing.JFrame
         DeleteBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/DeleteButton.png"))); // NOI18N
         DeleteBtn.setBorderPainted(false);
         DeleteBtn.setContentAreaFilled(false);
+        DeleteBtn.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                DeleteBtnActionPerformed(evt);
+            }
+        });
         getContentPane().add(DeleteBtn);
         DeleteBtn.setBounds(1100, 630, 130, 40);
 
@@ -411,6 +418,25 @@ public class FAdminPanel extends javax.swing.JFrame
         
         this.setEnabled(false);
     }//GEN-LAST:event_EditBtnActionPerformed
+
+    private void DeleteBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_DeleteBtnActionPerformed
+    {//GEN-HEADEREND:event_DeleteBtnActionPerformed
+        
+        // TODO: prompt
+        
+        int SelectedIdx = Table.getSelectedRow();
+        
+        if (SelectedIdx == -1)
+        {
+            JOptionPane.showMessageDialog(this, "Please select an employee to delete!");
+            return;
+        }
+        
+        String Identifier = Table.getValueAt(SelectedIdx, 0).toString();
+        Database.Instance.GetAllEmployees().remove(Identifier);
+        Database.Instance.SaveToFile();
+        this.LoadToTable();
+    }//GEN-LAST:event_DeleteBtnActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddBtn;
