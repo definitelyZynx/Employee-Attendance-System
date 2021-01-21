@@ -79,6 +79,7 @@ public class FLogInMenu extends javax.swing.JFrame
         Background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setAlwaysOnTop(true);
         setMaximumSize(new java.awt.Dimension(460, 630));
         setUndecorated(true);
         addWindowListener(new java.awt.event.WindowAdapter() {
